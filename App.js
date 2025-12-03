@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import {
     Alert,
     SafeAreaView,
@@ -9,7 +9,6 @@ import {
     View
 } from "react-native";
 
-//categories of fish to buy from
 const CATEGORIES = [
   "White Fish",
   "Oily Fish",
@@ -19,8 +18,6 @@ const CATEGORIES = [
   "Mollusc",
 ];
 
-
-//listings inside of the clickable categories
 const LISTINGS = {
   "White Fish": [
     {
@@ -96,7 +93,6 @@ const LISTINGS = {
   ],
 };
 
-
 export default function App() {
   const [selectedCategory, setSelectedCategory] = useState(null);
 
@@ -107,7 +103,7 @@ export default function App() {
 
   return (
     <SafeAreaView style={styles.root}>
-      {/* Top bar */}
+      {/* Top app bar */}
       <View style={styles.appBar}>
         <Text style={styles.appBarTitle}>Billingsgate Exchange</Text>
       </View>
@@ -149,7 +145,7 @@ export default function App() {
           // Listings list
           <ScrollView contentContainerStyle={styles.list}>
             {listingsForCategory.map((item, index) => (
-              <listingCard
+              <ListingCard
                 key={index}
                 item={item}
                 onPress={() =>
@@ -190,13 +186,14 @@ export default function App() {
 
       </View>
     </SafeAreaView>
-  );
+  );;
 }
 
 function CategoryCard({ label, onPress }) {
   return (
     <TouchableOpacity style={styles.card} onPress={onPress}>
       <View style={styles.cardImagePlaceholder}>
+        <Text style={styles.cardX}>✕</Text>
       </View>
       <Text style={styles.cardLabel}>{label}</Text>
     </TouchableOpacity>
@@ -207,6 +204,7 @@ function ListingCard({ item, onPress }) {
   return (
     <TouchableOpacity style={styles.listItem} onPress={onPress}>
       <View style={styles.listImagePlaceholder}>
+        <Text style={styles.cardX}>✕</Text>
       </View>
       <View style={styles.listTextContainer}>
         <Text style={styles.listTitle}>{item.name}</Text>
@@ -215,6 +213,20 @@ function ListingCard({ item, onPress }) {
         <Text style={styles.listMeta}>{item.location}</Text>
       </View>
     </TouchableOpacity>
+  );
+}
+
+function NavItem({ icon, label, active }) {
+  return (
+    <View style={styles.navItem}>
+      <Text style={[styles.navIcon, active && styles.navIconActive]}>
+        {icon}
+      </Text>
+      <Text style={[styles.navLabel, active && styles.navLabelActive]}>
+        {label}
+      </Text>
+      {active && <View style={styles.navIndicator} />}
+    </View>
   );
 }
 
@@ -283,6 +295,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginBottom: 6,
+  },
+  cardX: {
+    fontSize: 24,
+    color: "#D1D5DB",
   },
   cardLabel: {
     textAlign: "center",
