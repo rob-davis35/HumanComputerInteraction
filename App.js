@@ -138,7 +138,7 @@ export default function App() {
           // Category grid
           <ScrollView contentContainerStyle={styles.grid}>
             {CATEGORIES.map((name) => (
-              <categoryCard
+              <CategoryCard
                 key={name}
                 label={name}
                 onPress={() => setSelectedCategory(name)}
@@ -149,7 +149,7 @@ export default function App() {
           // Listings list
           <ScrollView contentContainerStyle={styles.list}>
             {listingsForCategory.map((item, index) => (
-              <ListingCard
+              <listingCard
                 key={index}
                 item={item}
                 onPress={() =>
@@ -193,19 +193,17 @@ export default function App() {
   );
 }
 
-// creates a category card with <categoryCard ... /> 
-function categoryCard({ label, onPress }) {
+function CategoryCard({ label, onPress }) {
   return (
     <TouchableOpacity style={styles.card} onPress={onPress}>
-      <View style={styles.cardImage}>
+      <View style={styles.cardImagePlaceholder}>
       </View>
       <Text style={styles.cardLabel}>{label}</Text>
     </TouchableOpacity>
   );
 }
 
-// same thing but for a listing
-function listingCard({ item, onPress }) {
+function ListingCard({ item, onPress }) {
   return (
     <TouchableOpacity style={styles.listItem} onPress={onPress}>
       <View style={styles.listImagePlaceholder}>
@@ -239,9 +237,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "600",
   },
-  appBarIcon: {
-    fontSize: 20,
-  },
   content: {
     flex: 1,
     paddingHorizontal: 16,
@@ -263,7 +258,6 @@ const styles = StyleSheet.create({
   backArrow: {
     fontSize: 22,
   },
-
   grid: {
     paddingBottom: 16,
     flexDirection: "row",
@@ -281,7 +275,7 @@ const styles = StyleSheet.create({
     shadowRadius: 3,
     shadowOffset: { width: 0, height: 1 },
   },
-  cardImage: {
+  cardImagePlaceholder: {
     height: 90,
     borderRadius: 8,
     borderWidth: 1,
@@ -290,13 +284,53 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginBottom: 6,
   },
-
   cardLabel: {
     textAlign: "center",
     fontSize: 14,
   },
 
-  // nav styles
+  // listing styles
+  list: {
+    paddingBottom: 16,
+  },
+  listItem: {
+    flexDirection: "row",
+    backgroundColor: "#F9FAFB",
+    borderRadius: 10,
+    marginBottom: 12,
+    padding: 8,
+    elevation: 1,
+    shadowOpacity: 0.05,
+    shadowRadius: 3,
+    shadowOffset: { width: 0, height: 1 },
+  },
+  listImagePlaceholder: {
+    width: 80,
+    height: 80,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: "#D1D5DB",
+    justifyContent: "center",
+    alignItems: "center",
+    marginRight: 8,
+  },
+  listTextContainer: {
+    flex: 1,
+  },
+  listTitle: {
+    fontSize: 14,
+    fontWeight: "600",
+    marginBottom: 2,
+  },
+  listPrice: {
+    fontSize: 13,
+    marginBottom: 2,
+  },
+  listMeta: {
+    fontSize: 12,
+    color: "#4B5563",
+  },
+
   bottomNav: {
     height: 64,
     backgroundColor: "#93C5FD",
