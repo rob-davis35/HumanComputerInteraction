@@ -402,4 +402,126 @@ export const styles = StyleSheet.create({
     fontWeight: "700",
     fontSize: 16,
   },
+
+  // BASKET PAGE STYLES
+  basketList: {
+    paddingBottom: 80, // Space for finish button
+  },
+
+  emptyBasket: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    paddingTop: 100,
+  },
+
+  emptyBasketText: {
+    fontSize: 18,
+    color: "#9CA3AF",
+    fontWeight: "500",
+  },
+
+  basketItem: {
+    flexDirection: "row",
+    backgroundColor: "#F9FAFB",
+    borderRadius: 10,
+    marginBottom: 12,
+    padding: 12,
+    elevation: 1,
+    shadowOpacity: 0.05,
+    shadowRadius: 3,
+    shadowOffset: { width: 0, height: 1 },
+  },
+
+  basketItemImage: {
+    width: 80,
+    height: 80,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: "#D1D5DB",
+    justifyContent: "center",
+    alignItems: "center",
+    marginRight: 12,
+  },
+
+  basketItemInfo: {
+    flex: 1,
+  },
+
+  basketItemName: {
+    fontSize: 16,
+    fontWeight: "600",
+    marginBottom: 4,
+    color: "#374151",
+  },
+
+  basketItemPrice: {
+    fontSize: 15,
+    marginBottom: 4,
+    color: "#374151",
+  },
+
+  basketItemMeta: {
+    fontSize: 13,
+    color: "#6B7280",
+  },
+
+  basketItemActions: {
+    justifyContent: "space-around",
+    alignItems: "center",
+  },
+
+  amendButton: {
+    backgroundColor: "#FEF3C7",
+    padding: 8,
+    borderRadius: 6,
+    marginBottom: 8,
+    width: 44,
+    alignItems: "center",
+  },
+
+  amendButtonText: {
+    fontSize: 20,
+  },
+
+  deleteButton: {
+    backgroundColor: "#FEE2E2",
+    padding: 8,
+    borderRadius: 6,
+    width: 44,
+    alignItems: "center",
+  },
+
+  deleteButtonText: {
+    fontSize: 20,
+  },
+
+  finishPayButton: {
+    backgroundColor: "#86EFAC",
+    padding: 16,
+    borderRadius: 10,
+    alignItems: "center",
+    marginTop: 16,
+    marginBottom: 16,
+  },
+
+  finishPayText: {
+    color: "#065F46",
+    fontWeight: "700",
+    fontSize: 18,
+  },
+
+  updateButton: {
+    backgroundColor: "#10B981",
+    padding: 14,
+    borderRadius: 8,
+    alignItems: "center",
+    marginTop: 16,
+  },
+
+  updateButtonText: {
+    color: "#fff",
+    fontWeight: "700",
+    fontSize: 16,
+  },
 });

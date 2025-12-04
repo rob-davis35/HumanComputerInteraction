@@ -9,8 +9,8 @@ import {
   TouchableOpacity,
   View
 } from "react-native";
-import { LISTINGS } from '../../constants/listings';
-import { styles } from '../../styles/styles';
+import { LISTINGS } from '../../../constants/listings';
+import { styles } from '../../../styles/styles';
 
 function ListingCard({ item, onPress }) {
   return (
@@ -170,30 +170,6 @@ export default function CategoryListings() {
           </View>
         </TouchableOpacity>
       </Modal>
-
-      {/* Bottom nav */}
-      <View style={styles.bottomNav}>
-        <View style={styles.navItem}>
-          <Text style={[styles.navIcon, styles.navIconActive]}>🐟</Text>
-          <Text style={[styles.navLabel, styles.navLabelActive]}>On Sale</Text>
-          <View style={styles.navIndicator} />
-        </View>
-
-        <View style={styles.navItem}>
-          <Text style={styles.navIcon}>🛒</Text>
-          <Text style={styles.navLabel}>Basket</Text>
-        </View>
-
-        <View style={styles.navItem}>
-          <Text style={styles.navIcon}>🔔</Text>
-          <Text style={styles.navLabel}>Alerts</Text>
-        </View>
-
-        <View style={styles.navItem}>
-          <Text style={styles.navIcon}>☰</Text>
-          <Text style={styles.navLabel}>More</Text>
-        </View>
-      </View>
     </SafeAreaView>
   );
 }
