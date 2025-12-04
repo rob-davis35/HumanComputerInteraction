@@ -1,12 +1,16 @@
 import React, { useState } from "react";
+
 import {
-    Alert,
-    SafeAreaView,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View
+  Alert,
+  KeyboardAvoidingView,
+  Platform,
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View
 } from "react-native";
 
 const CATEGORIES = [
@@ -93,8 +97,184 @@ const LISTINGS = {
   ],
 };
 
+// SIGN UP FUNCTIONALITY
+function SignUpPage({ onStart }) {
+
+  return (
+    <SafeAreaView style={styles.root}>
+      {/* Top app bar */}
+      <View style={styles.appBar}>
+        <Text style={styles.appBarTitle}>Billingsgate Exchange</Text>
+      </View>
+
+      <View style={styles.content}>
+        {/* Sign Up Title */}
+        <View style={styles.sectionHeader}>
+          <Text style={styles.sectionTitle}>Sign Up</Text>
+        </View>
+
+        <KeyboardAvoidingView
+          behavior={Platform.OS === "ios" ? "padding" : "height"}
+          style={styles.loginStyle}
+        >
+          <View style={styles.inputContainer}>
+            {/* First Name Input */}
+            <TextInput
+              style={styles.input}
+              placeholder="First Name"
+            />
+
+            {/* Last Name Input */}
+            <TextInput
+              style={styles.input}
+              placeholder="Last Name"
+            />
+
+            {/* Email Input */}
+            <TextInput
+              style={styles.input}
+              placeholder="Email"
+            />
+
+            {/* Password Input */}
+            <TextInput
+              style={styles.input}
+              placeholder="Password"
+              secureTextEntry
+            />
+
+            {/*Account Type Selection (Store Owner, Driver, or Customer)*/}
+
+            {/* Sign Up Button */}
+            <TouchableOpacity
+              style={styles.loginButton}
+              onPress={() => onStart()}>
+              <Text style={styles.loginButtonText}>Sign Up</Text>
+            </TouchableOpacity>
+
+          </View>
+        </KeyboardAvoidingView>
+      </View>
+    </SafeAreaView>
+  );
+}
+
+// LOGIN FUNCTIONALITY
+function LoginScreen({ onLogin, goToSignUp }) {
+  const [customerUsername, setCustomerUsername] = useState("");
+  const [customerPassword, setCustomerPassword] = useState("");
+
+  const [storeOwnerUsername, setStoreOwnerUsername] = useState("");
+  const [storeOwnerPassword, setStoreOwnerPassword] = useState("");
+
+  return (
+    <SafeAreaView style={styles.root}>
+      {/* Top app bar */}
+      <View style={styles.appBar}>
+        <Text style={styles.appBarTitle}>Billingsgate Exchange</Text>
+      </View>
+
+      <View style={styles.content}>
+        {/* Login Title */}
+        <View style={styles.sectionHeader}>
+          <Text style={styles.sectionTitle}>Login</Text>
+        </View>
+
+        {/* Makes it so the keyboard doesn't cover inputs */}
+        <KeyboardAvoidingView
+          behavior={Platform.OS === "ios" ? "padding" : "height"}
+          style={styles.loginStyle}
+        >
+
+          {/* Customer Login */}
+          <Text style={{ fontSize: 16, color: "#374151" }}>Customer</Text>
+
+          <View style={styles.inputContainer}>
+            {/* Username Input */}
+            <TextInput
+              style={styles.input}
+              placeholder="Username"
+              value={customerUsername}
+              onChangeText={setCustomerUsername}
+            />
+
+            {/* Password Input */}
+            <TextInput
+              style={styles.input}
+              placeholder="Password"
+              value={customerPassword}
+              onChangeText={setCustomerPassword}
+              secureTextEntry
+            />
+
+            {/* Login Button */}
+            <TouchableOpacity
+              style={styles.loginButton}
+              onPress={() => onLogin(customerUsername, customerPassword)}>
+              <Text style={styles.loginButtonText}>Login</Text>
+            </TouchableOpacity>
+
+          </View>
+
+          {/* Store Owner Login */}
+          <Text style={{ fontSize: 16, color: "#374151", marginTop: 24 }}>Store Owner</Text>
+
+          <View style={styles.inputContainer}>
+            {/* Username Input */}
+            <TextInput
+              style={styles.input}
+              placeholder="Username"
+              value={storeOwnerUsername}
+              onChangeText={setStoreOwnerUsername}
+            />
+
+            {/* Password Input */}
+            <TextInput
+              style={styles.input}
+              placeholder="Password"
+              value={storeOwnerPassword}
+              onChangeText={setStoreOwnerPassword}
+              secureTextEntry
+            />
+
+            {/* Login Button */}
+            <TouchableOpacity
+              style={styles.loginButton}
+              onPress={() => onLogin(storeOwnerUsername, storeOwnerPassword)}>
+              <Text style={styles.loginButtonText}>Login</Text>
+            </TouchableOpacity>
+
+          </View>
+
+          <Text style={styles.signUpText}>Don't have an account?</Text>
+          <TouchableOpacity
+            style={styles.signUpButton}
+            onPress={() => goToSignUp()}>
+            <Text style={styles.sUText}>Sign Up</Text>
+          </TouchableOpacity>
+
+        </KeyboardAvoidingView>
+      </View>
+    </SafeAreaView>
+  )
+}
+
 export default function App() {
   const [selectedCategory, setSelectedCategory] = useState(null);
+  // LOGIN STATE
+  const [isLoggedIn, setIsLoggedIn] = useState(null);
+  // SIGN UP STATE
+  const [isSigningUp, setIsSigningUp] = useState(null);
+
+  // If not logged in, show login screen
+  if (!isLoggedIn) {
+    // If signing up, show sign up screen
+    if (isSigningUp) {
+      return <SignUpPage onStart={() => setIsSigningUp(false)} />;
+    }
+    // Otherwise, show login screen
+    return <LoginScreen onLogin={() => setIsLoggedIn(true)} goToSignUp={() => setIsSigningUp(true)} />;
+  }
 
   const listingsForCategory =
     selectedCategory && LISTINGS[selectedCategory]
@@ -106,6 +286,11 @@ export default function App() {
       {/* Top app bar */}
       <View style={styles.appBar}>
         <Text style={styles.appBarTitle}>Billingsgate Exchange</Text>
+        {/* Sign Out Button */}
+        <TouchableOpacity style={styles.loginButton}
+          onPress={() => setIsLoggedIn(false)}>
+          <Text style={styles.loginButtonText}>Sign Out</Text>
+        </TouchableOpacity>
       </View>
 
       {/* Content */}
@@ -235,6 +420,61 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#E5E7EB", // light grey
   },
+
+  // LOGIN/SIGNUP SCREEN STYLES
+  loginStyle: {
+    flex: 1,
+    justifyContent: "center",
+    padding: 24,
+  },
+
+  inputContainer: {
+    backgroundColor: "#F3F4F6",
+    padding: 16,
+    borderRadius: 8,
+    marginTop: 24,
+  },
+
+  input: {
+    backgroundColor: "#fff",
+    padding: 12,
+    borderRadius: 8,
+    marginBottom: 12,
+    borderWidth: 1,
+    borderColor: "#D1D5DB",
+  },
+
+  loginButton: {
+    backgroundColor: "#2563EB",
+    padding: 14,
+    borderRadius: 8,
+    alignItems: "center",
+    marginTop: 8,
+  },
+
+  loginButtonText: {
+    color: "white",
+    fontWeight: "700",
+  },
+
+  signUpText: {
+    textAlign: "center",
+    marginTop: 16,
+    fontSize: 14,
+    color: "#374151",
+  },
+
+  signUpButton: {
+    alignItems: "center",
+    marginTop: 8,
+    textDecorationLine: "underline",
+  },
+
+  sUText: {
+    color: "#2563EB",
+    fontWeight: "600",
+  },
+
   appBar: {
     height: 64,
     backgroundColor: "#F3F4F6",
