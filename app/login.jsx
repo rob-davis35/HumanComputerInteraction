@@ -1,13 +1,13 @@
 import { useRouter } from 'expo-router';
 import { useState } from "react";
 import {
-    KeyboardAvoidingView,
-    Platform,
-    SafeAreaView,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View
+  KeyboardAvoidingView,
+  Platform,
+  SafeAreaView,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View
 } from "react-native";
 import { styles } from '../styles/styles';
 
@@ -21,8 +21,6 @@ export default function LoginScreen() {
   const [storeOwnerPassword, setStoreOwnerPassword] = useState("");
 
   const handleLogin = (username, password) => {
-    // Add authentication logic here later
-    // For now, just navigate to the shop
     router.replace('/(shop)');
   };
 
@@ -76,7 +74,7 @@ export default function LoginScreen() {
           </View>
 
           {/* Store Owner Login */}
-          <Text style={{ fontSize: 16, color: "#374151", marginTop: 24 }}>Store Owner</Text>
+          <Text style={{ fontSize: 16, color: "#374151", marginTop: 24 }}>Fishmonger</Text>
 
           <View style={styles.inputContainer}>
             {/* Username Input */}

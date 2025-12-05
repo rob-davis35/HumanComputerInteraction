@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   View
 } from "react-native";
+import SettingsMenu from '../../components/settingsWheel';
 import { CATEGORIES } from '../../constants/listings';
 import { styles } from '../../styles/styles';
 
@@ -25,7 +26,7 @@ function CategoryCard({ label, onPress }) {
 export default function ShopIndex() {
   const router = useRouter();
   const [showFilter, setShowFilter] = useState(false);
-  const [selectedCategories, setSelectedCategories] = useState(CATEGORIES); // All selected by default
+  const [selectedCategories, setSelectedCategories] = useState(CATEGORIES); 
 
   const toggleCategory = (category) => {
     if (selectedCategories.includes(category)) {
@@ -42,12 +43,7 @@ export default function ShopIndex() {
       {/* Top app bar */}
       <View style={styles.appBar}>
         <Text style={styles.appBarTitle}>Billingsgate Exchange</Text>
-        {/* Sign Out Button */}
-        <TouchableOpacity 
-          style={styles.loginButton}
-          onPress={() => router.replace('/login')}>
-          <Text style={styles.loginButtonText}>Sign Out</Text>
-        </TouchableOpacity>
+        <SettingsMenu />
       </View>
 
       {/* Content */}
@@ -69,7 +65,7 @@ export default function ShopIndex() {
             <CategoryCard
               key={name}
               label={name}
-              onPress={() => router.push(`/(shop)/category/listings?name=${name}`)}
+              onPress={() => router.push(`/category/listings?name=${name}`)}
             />
           ))}
         </ScrollView>

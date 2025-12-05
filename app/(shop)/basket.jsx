@@ -1,20 +1,20 @@
 import { useRouter } from 'expo-router';
 import { useState } from "react";
 import {
-    Alert,
-    Modal,
-    SafeAreaView,
-    ScrollView,
-    Text,
-    TouchableOpacity,
-    View
+  Alert,
+  Modal,
+  SafeAreaView,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View
 } from "react-native";
 import { styles } from '../../styles/styles';
 
 export default function Basket() {
   const router = useRouter();
   
-  // Temporary basket data - will be replaced with context later
+  // Temporary basket data 
   const [basketItems, setBasketItems] = useState([
     {
       id: 1,
@@ -77,20 +77,7 @@ export default function Basket() {
   };
 
   const handleDelete = (itemId) => {
-    Alert.alert(
-      "Remove Item",
-      "Are you sure you want to remove this item from your basket?",
-      [
-        { text: "Cancel", style: "cancel" },
-        {
-          text: "Remove",
-          style: "destructive",
-          onPress: () => {
-            setBasketItems(basketItems.filter(item => item.id !== itemId));
-          }
-        }
-      ]
-    );
+    setBasketItems(basketItems.filter(item => item.id !== itemId));
   };
 
   const handleFinishAndPay = () => {
@@ -117,7 +104,7 @@ export default function Basket() {
       <View style={styles.content}>
         {/* Section header */}
         <View style={styles.sectionHeader}>
-          <Text style={styles.sectionTitle}>Your Basket 🛒</Text>
+          <Text style={styles.sectionTitle}>Your Basket</Text>
         </View>
 
         {/* Basket Items List */}
@@ -166,7 +153,7 @@ export default function Basket() {
           <TouchableOpacity 
             style={styles.finishPayButton}
             onPress={handleFinishAndPay}>
-            <Text style={styles.finishPayText}>Finish and Pay 💵</Text>
+            <Text style={styles.finishPayText}>Finish and Pay</Text>
           </TouchableOpacity>
         )}
       </View>
@@ -226,7 +213,7 @@ export default function Basket() {
                   style={styles.updateButton}
                   onPress={handleUpdate}
                 >
-                  <Text style={styles.updateButtonText}>Update 🔄</Text>
+                  <Text style={styles.updateButtonText}>Update</Text>
                 </TouchableOpacity>
               </>
             )}

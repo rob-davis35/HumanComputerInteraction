@@ -69,11 +69,11 @@ export default function ShopLayout() {
           <Text style={[
             styles.navIcon, 
             pathname === '/more' && styles.navIconActive
-          ]}>☰</Text>
+          ]}>👤</Text>
           <Text style={[
             styles.navLabel, 
             pathname === '/more' && styles.navLabelActive
-          ]}>More</Text>
+          ]}>Account</Text>
           {pathname === '/more' && <View style={styles.navIndicator} />}
         </TouchableOpacity>
       </View>

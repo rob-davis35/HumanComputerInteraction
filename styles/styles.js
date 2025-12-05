@@ -524,4 +524,152 @@ export const styles = StyleSheet.create({
     fontWeight: "700",
     fontSize: 16,
   },
+
+  // SETTINGS MENU STYLES
+  settingsButton: {
+    padding: 8,
+  },
+
+  settingsIcon: {
+    fontSize: 24,
+  },
+
+  settingsModal: {
+    backgroundColor: '#fff',
+    borderRadius: 12,
+    padding: 20,
+    width: '70%',
+    maxWidth: 300,
+  },
+
+  settingsModalTitle: {
+    fontSize: 20,
+    fontWeight: '700',
+    marginBottom: 16,
+    color: '#374151',
+    textAlign: 'center',
+  },
+
+  settingsMenuItem: {
+    padding: 16,
+    borderBottomWidth: 1,
+    borderBottomColor: '#E5E7EB',
+  },
+
+  settingsMenuItemLast: {
+    borderBottomWidth: 0,
+  },
+
+  settingsMenuItemText: {
+    fontSize: 16,
+    color: '#374151',
+    textAlign: 'center',
+  },
+
+  signOutText: {
+    color: '#DC2626',
+    fontWeight: '600',
+  },
+
+  // LANGUAGE MODAL STYLES
+  languageModal: {
+    backgroundColor: '#fff',
+    borderRadius: 12,
+    padding: 20,
+    width: '80%',
+    maxWidth: 400,
+    maxHeight: '70%',
+  },
+
+  languageModalTitle: {
+    fontSize: 20,
+    fontWeight: '700',
+    marginBottom: 16,
+    color: '#374151',
+    textAlign: 'center',
+  },
+
+  languageList: {
+    maxHeight: 400,
+  },
+
+  languageItem: {
+    padding: 14,
+    borderBottomWidth: 1,
+    borderBottomColor: '#E5E7EB',
+  },
+
+  languageItemText: {
+    fontSize: 16,
+    color: '#374151',
+  },
+
+  closeLanguageButton: {
+    backgroundColor: '#6B7280',
+    padding: 12,
+    borderRadius: 8,
+    alignItems: 'center',
+    marginTop: 16,
+  },
+
+  closeLanguageText: {
+    color: '#fff',
+    fontWeight: '600',
+    fontSize: 16,
+  },
+
+  // ACCOUNT/MORE PAGE STYLES
+  accountMenuContainer: {
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    marginTop: 8,
+    overflow: 'hidden',
+  },
+
+  accountMenuItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 16,
+    borderBottomWidth: 1,
+    borderBottomColor: '#E5E7EB',
+    backgroundColor: '#fff',
+  },
+
+  accountMenuIcon: {
+    fontSize: 24,
+    marginRight: 12,
+    width: 30,
+  },
+
+  accountMenuText: {
+    flex: 1,
+    fontSize: 16,
+    color: '#374151',
+    fontWeight: '500',
+  },
+
+  accountMenuArrow: {
+    fontSize: 24,
+    color: '#9CA3AF',
+  },
+
+  signOutContainer: {
+    position: 'absolute',
+    bottom: 20,
+    left: 16,
+    right: 16,
+  },
+
+  signOutButtonLarge: {
+    backgroundColor: '#DC2626',
+    padding: 16,
+    borderRadius: 10,
+    alignItems: 'center',
+  },
+
+  signOutButtonText: {
+    color: '#fff',
+    fontWeight: '700',
+    fontSize: 16,
+  },
 });

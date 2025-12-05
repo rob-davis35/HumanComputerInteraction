@@ -59,9 +59,9 @@ export default function CategoryListings() {
   };
 
   const handleAddToBasket = () => {
-    if (!selectedItem) return; // Guard clause
+    if (!selectedItem) return; 
     
-    // For now, just show an alert. We'll connect to global basket later
+  
     Alert.alert(
       "Added to Basket",
       `${quantity}x ${selectedItem.name} added to basket`
