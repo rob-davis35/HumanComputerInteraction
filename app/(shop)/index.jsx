@@ -43,7 +43,7 @@ export default function ShopIndex() {
       {/* Top app bar */}
       <View style={styles.appBar}>
         <Text style={styles.appBarTitle}>Billingsgate Exchange</Text>
-        <SettingsMenu />
+        <SettingsMenu/>
       </View>
 
       {/* Content */}

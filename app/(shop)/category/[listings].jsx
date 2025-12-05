@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   View
 } from "react-native";
+import SettingsMenu from '../../../components/settingsWheel';
 import { LISTINGS } from '../../../constants/listings';
 import { styles } from '../../../styles/styles';
 
@@ -74,12 +75,7 @@ export default function CategoryListings() {
       {/* Top app bar */}
       <View style={styles.appBar}>
         <Text style={styles.appBarTitle}>Billingsgate Exchange</Text>
-        {/* Sign Out Button */}
-        <TouchableOpacity 
-          style={styles.loginButton}
-          onPress={() => router.replace('/login')}>
-          <Text style={styles.loginButtonText}>Sign Out</Text>
-        </TouchableOpacity>
+        <SettingsMenu/>
       </View>
 
       {/* Content */}
