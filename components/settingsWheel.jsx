@@ -39,7 +39,7 @@ export default function SettingsMenu() {
 
   const handleSignOut = () => {
     setShowSettingsModal(false);
-    router.replace('/login');
+    router.replace('/startPage');
   };
 
   const handleLanguageSelect = (language) => {
@@ -50,7 +50,7 @@ export default function SettingsMenu() {
   return (
     <>
       {/* Settings Cogwheel Button */}
-      <TouchableOpacity 
+      <TouchableOpacity
         style={styles.settingsButton}
         onPress={() => setShowSettingsModal(true)}>
         <Text style={styles.settingsIcon}>⚙️</Text>
@@ -63,33 +63,33 @@ export default function SettingsMenu() {
         animationType="fade"
         onRequestClose={() => setShowSettingsModal(false)}
       >
-        <TouchableOpacity 
+        <TouchableOpacity
           style={styles.modalOverlay}
           activeOpacity={1}
           onPress={() => setShowSettingsModal(false)}
         >
           <View style={styles.settingsModal} onStartShouldSetResponder={() => true}>
             <Text style={styles.settingsModalTitle}>Settings</Text>
-            
-            <TouchableOpacity 
+
+            <TouchableOpacity
               style={styles.settingsMenuItem}
               onPress={handleLanguagePress}>
               <Text style={styles.settingsMenuItemText}>Language</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity 
+            <TouchableOpacity
               style={styles.settingsMenuItem}
               onPress={handleSiteMapPress}>
               <Text style={styles.settingsMenuItemText}>Site Map</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity 
+            <TouchableOpacity
               style={styles.settingsMenuItem}
               onPress={handleAccessibilityPress}>
               <Text style={styles.settingsMenuItemText}>Accessibility</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity 
+            <TouchableOpacity
               style={[styles.settingsMenuItem, styles.settingsMenuItemLast]}
               onPress={handleSignOut}>
               <Text style={[styles.settingsMenuItemText, styles.signOutText]}>Sign Out</Text>
@@ -105,14 +105,14 @@ export default function SettingsMenu() {
         animationType="fade"
         onRequestClose={() => setShowLanguageModal(false)}
       >
-        <TouchableOpacity 
+        <TouchableOpacity
           style={styles.modalOverlay}
           activeOpacity={1}
           onPress={() => setShowLanguageModal(false)}
         >
           <View style={styles.languageModal} onStartShouldSetResponder={() => true}>
             <Text style={styles.languageModalTitle}>Select Language</Text>
-            
+
             <ScrollView style={styles.languageList}>
               {languages.map((language, index) => (
                 <TouchableOpacity

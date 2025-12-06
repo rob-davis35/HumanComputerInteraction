@@ -6,6 +6,37 @@ export const styles = StyleSheet.create({
     backgroundColor: "#E5E7EB", // light grey
   },
 
+  //START PAGE STYLES
+  startPageMenuItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 30,
+    borderRadius: 15,
+    marginTop: 15,
+    marginBottom: 30,
+    borderBottomWidth: 15,
+    borderBottomColor: '#0257ffff',
+    backgroundColor: '#fff',
+  },
+
+  startPageMenuIcon: {
+    fontSize: 24,
+    marginRight: 12,
+    width: 35,
+  },
+
+  startPageMenuText: {
+    flex: 1,
+    fontSize: 16,
+    color: '#374151',
+    fontWeight: '500',
+  },
+
+  startPageMenuArrow: {
+    fontSize: 24,
+    color: '#9CA3AF',
+  },
+
   // LOGIN/SIGNUP SCREEN STYLES
   loginStyle: {
     flex: 1,
@@ -42,6 +73,13 @@ export const styles = StyleSheet.create({
     fontWeight: "700",
   },
 
+  signUpContainer: {
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    padding: 10,
+    borderRadius: 10,
+  },
+
   signUpText: {
     textAlign: "center",
     marginTop: 16,
@@ -58,6 +96,55 @@ export const styles = StyleSheet.create({
   sUText: {
     color: "#2563EB",
     fontWeight: "600",
+  },
+
+  //VALIDATION MESSAGE STYLES
+  validationMessage: {
+    position: "absolute",
+    bottom: 40,
+    left: 20,
+    right: 20,
+    padding: 15,
+    borderRadius: 12,
+    alignItems: "center",
+    justifyContent: "center",
+    zIndex: 999,
+  },
+
+  validationMessageText: {
+    color: "white",
+    fontSize: 16,
+    textAlign: "center",
+  },
+
+  //RADIO BUTTON STYLES
+  radioContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    flexWrap: "nowrap",
+    marginBottom: 12,
+    marginTop: 12,
+  },
+
+  radio: {
+    flexDirection: "row",
+    alignItems: "center",
+    flexWrap: "nowrap",
+    marginRight: 20,
+  },
+
+  activeRadio: {
+    opacity: 0.6,
+    flexDirection: "row",
+    alignItems: "center",
+    flexWrap: "nowrap",
+    marginRight: 20,
+  },
+
+  radioText: {
+    marginLeft: 8,
+    fontSize: 16,
+    color: "#374151",
   },
 
   appBar: {
