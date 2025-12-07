@@ -759,4 +759,46 @@ export const styles = StyleSheet.create({
     fontWeight: '700',
     fontSize: 16,
   },
+
+  // SHOP FRONT PAGE STYLES
+  shopFrontMenuContainer: {
+    borderRadius: 10,
+    marginTop: 12,
+    borderWidth: 1,
+    borderColor: 'black',
+    backgroundColor: '#fff',
+    overflow: 'hidden',
+  },
+
+  shopFrontMenuItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 15,
+    borderRadius: 5,
+    marginTop: 15,
+    marginLeft: 20,
+    marginRight: 20,
+    marginBottom: 15,
+    borderWidth: 1,
+    borderColor: '#black',
+    backgroundColor: '#abe6adff',
+  },
+
+  shopFrontMenuIcon: {
+    fontSize: 24,
+    marginRight: 12,
+    width: 30,
+  },
+
+  shopFrontMenuText: {
+    flex: 1,
+    fontSize: 16,
+    color: '#374151',
+    fontWeight: '500',
+  },
+
+  shopFrontMenuArrow: {
+    fontSize: 24,
+    color: '#9CA3AF',
+  },
 });

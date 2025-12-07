@@ -9,11 +9,12 @@ import {
   TouchableOpacity,
   View
 } from "react-native";
+import SettingsMenu from '../../components/settingsWheel';
 import { styles } from '../../styles/styles';
 
 export default function Basket() {
   const router = useRouter();
-  
+
   // Temporary basket data 
   const [basketItems, setBasketItems] = useState([
     {
@@ -65,14 +66,14 @@ export default function Basket() {
 
   const handleUpdate = () => {
     if (!selectedItem) return;
-    
+
     // Update the quantity in basket
-    setBasketItems(basketItems.map(item => 
-      item.id === selectedItem.id 
+    setBasketItems(basketItems.map(item =>
+      item.id === selectedItem.id
         ? { ...item, quantity: amendQuantity }
         : item
     ));
-    
+
     setShowAmendModal(false);
   };
 
@@ -93,11 +94,7 @@ export default function Basket() {
       {/* Top app bar */}
       <View style={styles.appBar}>
         <Text style={styles.appBarTitle}>Billingsgate Exchange</Text>
-        <TouchableOpacity 
-          style={styles.loginButton}
-          onPress={() => router.replace('/login')}>
-          <Text style={styles.loginButtonText}>Sign Out</Text>
-        </TouchableOpacity>
+        <SettingsMenu />
       </View>
 
       {/* Content */}
@@ -132,12 +129,12 @@ export default function Basket() {
 
                 {/* Actions */}
                 <View style={styles.basketItemActions}>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.amendButton}
                     onPress={() => handleAmendPress(item)}>
                     <Text style={styles.amendButtonText}>✏️</Text>
                   </TouchableOpacity>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.deleteButton}
                     onPress={() => handleDelete(item.id)}>
                     <Text style={styles.deleteButtonText}>🗑️</Text>
@@ -150,7 +147,7 @@ export default function Basket() {
 
         {/* Finish and Pay Button */}
         {basketItems.length > 0 && (
-          <TouchableOpacity 
+          <TouchableOpacity
             style={styles.finishPayButton}
             onPress={handleFinishAndPay}>
             <Text style={styles.finishPayText}>Finish and Pay</Text>
@@ -165,7 +162,7 @@ export default function Basket() {
         animationType="fade"
         onRequestClose={() => setShowAmendModal(false)}
       >
-        <TouchableOpacity 
+        <TouchableOpacity
           style={styles.modalOverlay}
           activeOpacity={1}
           onPress={() => setShowAmendModal(false)}
@@ -187,14 +184,14 @@ export default function Basket() {
                 <View style={styles.quantityContainer}>
                   <Text style={styles.quantityLabel}>Quantity</Text>
                   <View style={styles.quantityPicker}>
-                    <TouchableOpacity 
+                    <TouchableOpacity
                       style={styles.quantityButton}
                       onPress={decrementQuantity}
                     >
                       <Text style={styles.quantityButtonText}>-</Text>
                     </TouchableOpacity>
                     <Text style={styles.quantityValue}>{amendQuantity}</Text>
-                    <TouchableOpacity 
+                    <TouchableOpacity
                       style={styles.quantityButton}
                       onPress={incrementQuantity}
                     >
@@ -209,7 +206,7 @@ export default function Basket() {
                 <Text style={styles.itemModalInfo}>Location: {selectedItem.location}</Text>
 
                 {/* Update Button */}
-                <TouchableOpacity 
+                <TouchableOpacity
                   style={styles.updateButton}
                   onPress={handleUpdate}
                 >
