@@ -2,9 +2,11 @@ import { useRouter } from 'expo-router';
 import { useState } from "react";
 import {
     Modal,
+    Platform,
     SafeAreaView,
     ScrollView,
     Text,
+    TextInput,
     TouchableOpacity,
     View
 } from "react-native";
@@ -14,10 +16,16 @@ import { styles } from '../../styles/styles';
 
 export default function SalesHistory() {
     const router = useRouter();
-    const [showFilter, setShowFilter] = useState(false);
-    const [selectedCategories, setSelectedCategories] = useState(CATEGORIES);
 
-    // Assign categories to your original salesHistory data
+    const [showFilter, setShowFilter] = useState(false);
+    const [showDateFilter, setShowDateFilter] = useState(false);
+
+    const VALID_CATEGORIES = CATEGORIES.filter(c => ["Shellfish", "White Fish"].includes(c));
+
+    const [selectedCategories, setSelectedCategories] = useState(VALID_CATEGORIES);
+    const [startDate, setStartDate] = useState("");
+    const [endDate, setEndDate] = useState("");
+
     const SALES_LISTINGS = {
         "Shellfish": [
             {
@@ -53,61 +61,51 @@ export default function SalesHistory() {
         ]
     };
 
-    // Filter category logic (same as index)
     const toggleCategory = (category) => {
-        if (selectedCategories.includes(category)) {
-            setSelectedCategories(selectedCategories.filter(c => c !== category));
-        } else {
-            setSelectedCategories([...selectedCategories, category]);
-        }
+        setSelectedCategories(prev =>
+            prev.includes(category)
+                ? prev.filter(c => c !== category)
+                : [...prev, category]
+        );
     };
 
-    // Flatten listings by selected categories
-    const filteredSales = selectedCategories.flatMap(category =>
-        SALES_LISTINGS[category] || []
-    );
+    const filteredSales = selectedCategories
+        .flatMap(category => SALES_LISTINGS[category] || [])
+        .filter(item => {
+            const soldDate = new Date(item.dateSold);
+            const afterStart = startDate ? soldDate >= new Date(startDate) : true;
+            const beforeEnd = endDate ? soldDate <= new Date(endDate) : true;
+            return afterStart && beforeEnd;
+        });
 
-    // Back button
     const handleBack = () => {
         router.replace("/(shop)/storeDetails");
     };
 
     return (
         <SafeAreaView style={styles.root}>
-            {/* Top app bar */}
             <View style={styles.appBar}>
                 <Text style={styles.appBarTitle}>Billingsgate Exchange</Text>
                 <SettingsMenu />
             </View>
 
-            {/* Content */}
             <View style={styles.content}>
-                {/* Section header */}
+                {/* HEADER */}
                 <View style={styles.sectionHeader}>
 
-                    <>
-                        <TouchableOpacity
-                            onPress={() => handleBack()}
-                            style={styles.backButton}
-                        >
-                            <Text style={styles.backArrow}>‹</Text>
-                        </TouchableOpacity>
-                        <Text style={styles.sectionTitle}>
-                            Sales History - The Shrimp Hoarders
-                        </Text>
-                    </>
+                    <TouchableOpacity onPress={handleBack} style={styles.backButton}>
+                        <Text style={styles.backArrow}>‹</Text>
+                    </TouchableOpacity>
 
-                    {/* Filter Date Button */}
-                    <TouchableOpacity
-                        style={styles.filterButton}>
+                    <Text style={styles.sectionTitle}>
+                        Sales History - The Shrimp Hoarders
+                    </Text>
+
+                    <TouchableOpacity style={styles.filterButton} onPress={() => setShowDateFilter(true)}>
                         <Text style={styles.filterIcon}>📅</Text>
                     </TouchableOpacity>
 
-                    {/* Filter Fish Button */}
-                    <TouchableOpacity
-                        style={styles.filterButton}
-                        onPress={() => setShowFilter(true)}
-                    >
+                    <TouchableOpacity style={styles.filterButton} onPress={() => setShowFilter(true)}>
                         <Text style={styles.filterIcon}>▼</Text>
                     </TouchableOpacity>
                 </View>
@@ -119,38 +117,36 @@ export default function SalesHistory() {
                             <View style={styles.listImagePlaceholder}>
                                 <Text style={styles.cardX}>✕</Text>
                             </View>
-
                             <View style={styles.listTextContainer}>
                                 <Text style={styles.listTitle}>{item.itemName}</Text>
                                 <Text style={styles.listPrice}>Total: {item.totalPrice}</Text>
-                                <Text style={styles.listMeta}>
-                                    Quantity Sold: {item.quantitySold}
-                                </Text>
-                                <Text style={styles.listMeta}>
-                                    Date Sold: {item.dateSold}
-                                </Text>
+                                <Text style={styles.listMeta}>Qty Sold: {item.quantitySold}</Text>
+                                <Text style={styles.listMeta}>Date: {item.dateSold}</Text>
                             </View>
                         </View>
                     ))}
                 </ScrollView>
             </View>
 
-            {/* CATEGORY FILTER MODAL */}
             <Modal
                 visible={showFilter}
-                transparent={true}
+                transparent
                 animationType="fade"
                 onRequestClose={() => setShowFilter(false)}
             >
                 <TouchableOpacity
-                    style={styles.modalOverlay}
                     activeOpacity={1}
-                    onPress={() => setShowFilter(false)}
+                    style={styles.modalOverlay}
+                    onPress={() => setShowFilter(false)}   // <-- close when tapping outside
                 >
-                    <View style={styles.filterModal}>
-                        <Text style={styles.filterTitle}>Filter by Category:</Text>
+                    <TouchableOpacity
+                        activeOpacity={1}
+                        style={styles.filterModal}
+                        onPress={(e) => e.stopPropagation()} // <-- prevent closing when tapping inside
+                    >
+                        <Text style={styles.filterTitle}>Filter by Category</Text>
 
-                        {CATEGORIES.map((category) => (
+                        {VALID_CATEGORIES.map(category => (
                             <TouchableOpacity
                                 key={category}
                                 style={styles.filterOption}
@@ -158,9 +154,7 @@ export default function SalesHistory() {
                             >
                                 <Text style={styles.filterOptionText}>{category}</Text>
                                 <View style={styles.checkbox}>
-                                    {selectedCategories.includes(category) && (
-                                        <Text style={styles.checkmark}>✓</Text>
-                                    )}
+                                    {selectedCategories.includes(category) && <Text style={styles.checkmark}>✓</Text>}
                                 </View>
                             </TouchableOpacity>
                         ))}
@@ -171,7 +165,93 @@ export default function SalesHistory() {
                         >
                             <Text style={styles.closeFilterText}>Done</Text>
                         </TouchableOpacity>
-                    </View>
+                    </TouchableOpacity>
+                </TouchableOpacity>
+            </Modal>
+
+
+            <Modal
+                visible={showDateFilter}
+                transparent
+                animationType="fade"
+                onRequestClose={() => setShowDateFilter(false)}
+            >
+                <TouchableOpacity
+                    activeOpacity={1}
+                    style={styles.modalOverlay}
+                    onPress={() => setShowDateFilter(false)}  // <-- close when tapping outside
+                >
+                    <TouchableOpacity
+                        activeOpacity={1}
+                        style={styles.filterModal}
+                        onPress={(e) => e.stopPropagation()}   // <-- prevent closing on inside tap
+                    >
+                        <Text style={styles.filterTitle}>Filter by Date</Text>
+
+                        {/* Start Date */}
+                        <Text style={styles.dateLabel}>Start Date</Text>
+
+                        {Platform.OS === "web" ? (
+                            <View style={styles.dateInputWrapper}>
+                                <input
+                                    type="date"
+                                    style={styles.dateInputWeb}
+                                    value={startDate}
+                                    onChange={(e) => setStartDate(e.target.value)}
+                                />
+                            </View>
+                        ) : (
+                            <TextInput
+                                placeholder="YYYY-MM-DD"
+                                value={startDate}
+                                onChangeText={setStartDate}
+                                style={styles.input}
+                            />
+                        )}
+
+                        {/* End Date */}
+                        <Text style={styles.dateLabel}>End Date</Text>
+
+                        {Platform.OS === "web" ? (
+                            <View style={styles.dateInputWrapper}>
+                                <input
+                                    type="date"
+                                    style={styles.dateInputWeb}
+                                    value={endDate}
+                                    onChange={(e) => setEndDate(e.target.value)}
+                                />
+                            </View>
+                        ) : (
+                            <TextInput
+                                placeholder="YYYY-MM-DD"
+                                value={endDate}
+                                onChangeText={setEndDate}
+                                style={styles.input}
+                            />
+                        )}
+
+                        <View style={styles.dateButtonRow}>
+                            <TouchableOpacity
+                                style={[styles.closeFilterButton, { backgroundColor: "#6B7280", flex: 1 }]}
+                                onPress={() => {
+                                    setStartDate("");
+                                    setEndDate("");
+                                }}
+                            >
+                                <Text style={styles.closeFilterText}>Reset</Text>
+                            </TouchableOpacity>
+
+                            <View style={{ width: 12 }} />
+
+                            <TouchableOpacity
+                                style={[styles.closeFilterButton, { flex: 1 }]}
+                                onPress={() => setShowDateFilter(false)}
+                            >
+                                <Text style={styles.closeFilterText}>Apply</Text>
+                            </TouchableOpacity>
+                        </View>
+
+                    </TouchableOpacity>
                 </TouchableOpacity>
             </Modal>
         </SafeAreaView>

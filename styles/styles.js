@@ -854,7 +854,7 @@ export const styles = StyleSheet.create({
     padding: 12,
     height: 120,
     borderRadius: 8,
-    marginBottom: 12,
+    marginBottom: 7,
     borderWidth: 1,
     borderColor: "#D1D5DB",
   },
@@ -908,7 +908,26 @@ export const styles = StyleSheet.create({
   },
 
   photoImage: {
-    width: 80,
-    height: 80,
+    width: 45,
+    height: 45,
+    marginTop: 3,
+  },
+
+  dateLabel: {
+    fontSize: 14,
+    fontWeight: "600",
+    marginBottom: 6,
+    color: "#374151",
+  },
+
+  dateInputWrapper: {
+    width: "100%",
+    marginBottom: 16,
+  },
+
+  dateButtonRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 10,
   },
 });
