@@ -81,7 +81,7 @@ export default function HelpSupport() {
                             </View>
                             <View style={styles.contactInfo}>
                                 <Text style={styles.contactLabel}>Main Office</Text>
-                                <Text style={styles.contactValue}>020 7987 1212</Text>
+                                <Text style={styles.contactValue}>020 6767 1269</Text>
                             </View>
                             <Text style={styles.contactArrow}>›</Text>
                         </TouchableOpacity>
@@ -109,7 +109,7 @@ export default function HelpSupport() {
                             </View>
                             <View style={styles.contactInfo}>
                                 <Text style={styles.contactLabel}>Security</Text>
-                                <Text style={styles.contactValue}>020 7987 1214</Text>
+                                <Text style={styles.contactValue}>020 7913 1722</Text>
                             </View>
                             <Text style={styles.contactArrow}>›</Text>
                         </TouchableOpacity>
@@ -123,7 +123,7 @@ export default function HelpSupport() {
                             </View>
                             <View style={styles.contactInfo}>
                                 <Text style={styles.contactLabel}>Helpdesk</Text>
-                                <Text style={styles.contactValue}>020 7987 1215</Text>
+                                <Text style={styles.contactValue}>020 7463 1265</Text>
                             </View>
                             <Text style={styles.contactArrow}>›</Text>
                         </TouchableOpacity>
@@ -141,7 +141,7 @@ export default function HelpSupport() {
                             </View>
                             <View style={styles.contactInfo}>
                                 <Text style={styles.contactLabel}>General Support</Text>
-                                <Text style={styles.contactValue}>support@billingsgate.com</Text>
+                                <Text style={styles.contactValue}>support@billingsgate.co.uk</Text>
                             </View>
                             <Text style={styles.contactArrow}>›</Text>
                         </TouchableOpacity>
@@ -154,7 +154,7 @@ export default function HelpSupport() {
                             </View>
                             <View style={styles.contactInfo}>
                                 <Text style={styles.contactLabel}>Vendor Support</Text>
-                                <Text style={styles.contactValue}>vendors@billingsgate.com</Text>
+                                <Text style={styles.contactValue}>vendors@billingsgate.co.uk</Text>
                             </View>
                             <Text style={styles.contactArrow}>›</Text>
                         </TouchableOpacity>

@@ -1236,4 +1236,126 @@ export const styles = StyleSheet.create({
     color: '#6B7280',
     lineHeight: 20,
   },
+
+  // STOREFRONT/ORDER STYLES <---- down here bc i deleted them before mb  
+  completeOrderButton: {
+    backgroundColor: "#d6fec7ff",
+    padding: 8,
+    borderRadius: 6,
+    marginBottom: 8,
+    width: 44,
+    alignItems: "center",
+  },
+
+  contactCustomerButton: {
+    backgroundColor: "#E5E7EB",
+    marginTop: 10,
+    borderWidth: 1,
+    borderRadius: 5,
+    borderColor: "black"
+  },
+
+  contactCustomerText: {
+    fontSize: 15,
+    alignContent: "center",
+    marginLeft: 12,
+    marginTop: 4,
+    marginBottom: 4,
+    color: "#374151",
+  },
+
+  orderSeller: {
+    fontSize: 13,
+    color: '#6B7280',
+    marginBottom: 8,
+  },
+
+  orderFooter: {
+    borderTopWidth: 1,
+    borderTopColor: '#E5E7EB',
+    paddingTop: 8,
+    marginTop: 8,
+  },
+
+  // NEW LISTING STYLES
+  descriptionInput: {
+    backgroundColor: "#ffff",
+    padding: 12,
+    height: 120,
+    borderRadius: 8,
+    marginBottom: 7,
+    borderWidth: 1,
+    borderColor: "#D1D5DB",
+  },
+
+  newListingContainer: {
+    backgroundColor: "#F3F4F6",
+  },
+
+  photoPriceContent: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    width: "100%",
+  },
+
+  photoColumn: {
+    flexDirection: "column",
+    alignItems: "center",
+    width: "30%",
+  },
+
+  photoText: {
+    fontSize: 12,
+    fontWeight: "600",
+    color: "#374151",
+    marginBottom: 8,
+  },
+
+  photoImage: {
+    width: 45,
+    height: 45,
+    marginTop: 9,
+  },
+
+  priceColumn: {
+    flexDirection: "column",
+    width: "50%",
+  },
+
+  priceLabel: {
+    fontSize: 16,
+    fontWeight: "600",
+    color: "#374151",
+  },
+
+  priceInput: {
+    backgroundColor: "#ffff",
+    padding: 12,
+    borderRadius: 8,
+    marginBottom: 12,
+    borderWidth: 1,
+    borderColor: "#D1D5DB",
+  },
+
+  // DATE PICKER STYLES
+  dateInputWrapper: {
+    width: "100%",
+    marginBottom: 16,
+  },
+
+  dateButtonRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 10,
+  },
+
+  dateLabel: {
+    fontSize: 14,
+    fontWeight: "600",
+    color: "#374151",
+    marginBottom: 6,
+    marginTop: 8,
+  },
+
 });
