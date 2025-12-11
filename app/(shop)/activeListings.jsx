@@ -9,6 +9,7 @@ import {
     View
 } from "react-native";
 import SettingsMenu from '../../components/settingsWheel';
+import ValidationMessage from '../../components/validationMessage';
 import { CATEGORIES } from '../../constants/listings';
 import { styles } from '../../styles/styles';
 
@@ -153,6 +154,17 @@ export default function Basket() {
     const [showFilter, setShowFilter] = useState(false);
     const [selectedCategories, setSelectedCategories] = useState(CATEGORIES);
 
+    // Validation message state
+    const [validationMessage, setValidationMessage] = useState(false);
+    const [validationText, setValidationText] = useState("");
+    const [validationType, setValidationType] = useState("error");
+
+    const showMessage = (type, text) => {
+        setValidationType(type);
+        setValidationText(text);
+        setValidationMessage(true);
+    };
+
     const handleAmendPress = (item) => {
         setSelectedItem(item);
         setAmendQuantity(item.quantity);
@@ -180,6 +192,9 @@ export default function Basket() {
         ));
 
         setShowAmendModal(false);
+
+        showMessage("success", "Listing Updated");
+        return;
     };
 
     const toggleCategory = (category) => {
@@ -194,6 +209,9 @@ export default function Basket() {
 
     const handleDelete = (itemId) => {
         setActiveListingItems(activeListingItems.filter(item => item.id !== itemId));
+
+        showMessage("error", "Listing Deleted");
+        return;
     };
 
     const handleBack = () => {
@@ -374,6 +392,14 @@ export default function Basket() {
                     </View>
                 </TouchableOpacity>
             </Modal>
+
+            <ValidationMessage
+                visible={validationMessage}
+                type={validationType}
+                message={validationText}
+                onHide={() => setValidationMessage(false)}
+            />
+
         </SafeAreaView>
     );
 }

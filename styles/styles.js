@@ -48,7 +48,7 @@ export const styles = StyleSheet.create({
     backgroundColor: "#F3F4F6",
     padding: 16,
     borderRadius: 8,
-    marginTop: 24,
+    marginBottom: 70,
   },
 
   input: {
@@ -76,6 +76,8 @@ export const styles = StyleSheet.create({
   signUpContainer: {
     alignItems: 'center',
     backgroundColor: '#fff',
+    borderWidth: 1,
+    borderColor: "black",
     padding: 10,
     borderRadius: 10,
   },

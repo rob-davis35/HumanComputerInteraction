@@ -10,6 +10,7 @@ import {
   View
 } from "react-native";
 import SettingsMenu from '../../../components/settingsWheel';
+import ValidationMessage from '../../../components/validationMessage';
 import { LISTINGS } from '../../../constants/listings';
 import { styles } from '../../../styles/styles';
 
@@ -38,6 +39,17 @@ export default function CategoryListings() {
   const [selectedItem, setSelectedItem] = useState(null);
   const [quantity, setQuantity] = useState(1);
 
+  // Validation message state
+  const [validationMessage, setValidationMessage] = useState(false);
+  const [validationText, setValidationText] = useState("");
+  const [validationType, setValidationType] = useState("error");
+
+  const showMessage = (type, text) => {
+    setValidationType(type);
+    setValidationText(text);
+    setValidationMessage(true);
+  };
+
   // Get listings for this category
   const listingsForCategory = name && LISTINGS[name] ? LISTINGS[name] : [];
 
@@ -60,14 +72,17 @@ export default function CategoryListings() {
   };
 
   const handleAddToBasket = () => {
-    if (!selectedItem) return; 
-    
-  
+    if (!selectedItem) return;
+
+
     Alert.alert(
       "Added to Basket",
       `${quantity}x ${selectedItem.name} added to basket`
     );
     setShowModal(false);
+
+    showMessage("success", "Item Added to Basket");
+    return;
   };
 
   return (
@@ -75,7 +90,7 @@ export default function CategoryListings() {
       {/* Top app bar */}
       <View style={styles.appBar}>
         <Text style={styles.appBarTitle}>Billingsgate Exchange</Text>
-        <SettingsMenu/>
+        <SettingsMenu />
       </View>
 
       {/* Content */}
@@ -112,7 +127,7 @@ export default function CategoryListings() {
         animationType="fade"
         onRequestClose={() => setShowModal(false)}
       >
-        <TouchableOpacity 
+        <TouchableOpacity
           style={styles.modalOverlay}
           activeOpacity={1}
           onPress={() => setShowModal(false)}
@@ -134,14 +149,14 @@ export default function CategoryListings() {
                 <View style={styles.quantityContainer}>
                   <Text style={styles.quantityLabel}>Quantity</Text>
                   <View style={styles.quantityPicker}>
-                    <TouchableOpacity 
+                    <TouchableOpacity
                       style={styles.quantityButton}
                       onPress={decrementQuantity}
                     >
                       <Text style={styles.quantityButtonText}>-</Text>
                     </TouchableOpacity>
                     <Text style={styles.quantityValue}>{quantity}</Text>
-                    <TouchableOpacity 
+                    <TouchableOpacity
                       style={styles.quantityButton}
                       onPress={incrementQuantity}
                     >
@@ -155,7 +170,7 @@ export default function CategoryListings() {
                 <Text style={styles.itemModalInfo}>Location: {selectedItem.location}</Text>
 
                 {/* Add to Basket Button */}
-                <TouchableOpacity 
+                <TouchableOpacity
                   style={styles.addToBasketButton}
                   onPress={handleAddToBasket}
                 >
@@ -166,6 +181,14 @@ export default function CategoryListings() {
           </View>
         </TouchableOpacity>
       </Modal>
+
+      <ValidationMessage
+        visible={validationMessage}
+        type={validationType}
+        message={validationText}
+        onHide={() => setValidationMessage(false)}
+      />
+
     </SafeAreaView>
   );
 }

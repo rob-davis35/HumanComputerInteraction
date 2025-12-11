@@ -10,6 +10,7 @@ import {
   View
 } from "react-native";
 import SettingsMenu from '../../components/settingsWheel';
+import ValidationMessage from '../../components/validationMessage';
 import { styles } from '../../styles/styles';
 
 export default function Basket() {
@@ -48,6 +49,17 @@ export default function Basket() {
   const [selectedItem, setSelectedItem] = useState(null);
   const [amendQuantity, setAmendQuantity] = useState(1);
 
+  // Validation message state
+  const [validationMessage, setValidationMessage] = useState(false);
+  const [validationText, setValidationText] = useState("");
+  const [validationType, setValidationType] = useState("error");
+
+  const showMessage = (type, text) => {
+    setValidationType(type);
+    setValidationText(text);
+    setValidationMessage(true);
+  };
+
   const handleAmendPress = (item) => {
     setSelectedItem(item);
     setAmendQuantity(item.quantity);
@@ -75,6 +87,8 @@ export default function Basket() {
     ));
 
     setShowAmendModal(false);
+    showMessage("success", "Order Updated");
+    return;
   };
 
   const handleDelete = (itemId) => {
@@ -87,6 +101,9 @@ export default function Basket() {
       "Proceeding to payment...",
       [{ text: "OK" }]
     );
+
+    showMessage("success", "Items Purchased!");
+    return;
   };
 
   return (
@@ -217,6 +234,14 @@ export default function Basket() {
           </View>
         </TouchableOpacity>
       </Modal>
+
+      <ValidationMessage
+        visible={validationMessage}
+        type={validationType}
+        message={validationText}
+        onHide={() => setValidationMessage(false)}
+      />
+
     </SafeAreaView>
   );
 }

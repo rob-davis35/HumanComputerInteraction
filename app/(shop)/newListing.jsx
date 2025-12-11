@@ -10,6 +10,7 @@ import {
     TouchableOpacity,
     View
 } from "react-native";
+import SettingsMenu from '../../components/settingsWheel';
 import ValidationMessage from '../../components/validationMessage';
 import { styles } from '../../styles/styles';
 
@@ -109,6 +110,7 @@ export default function SignUpPage({ onStart }) {
             {/* Top app bar */}
             <View style={styles.appBar}>
                 <Text style={styles.appBarTitle}>Billingsgate Exchange</Text>
+                <SettingsMenu />
             </View>
 
             <View style={styles.content}>
