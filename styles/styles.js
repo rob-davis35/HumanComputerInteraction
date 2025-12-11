@@ -40,7 +40,6 @@ export const styles = StyleSheet.create({
   // LOGIN/SIGNUP SCREEN STYLES
   loginStyle: {
     flex: 1,
-    justifyContent: "center",
     padding: 24,
   },
 
@@ -66,7 +65,6 @@ export const styles = StyleSheet.create({
     backgroundColor: "#F3F4F6",
     padding: 16,
     borderRadius: 8,
-    marginTop: 24,
   },
 
   input: {
@@ -1290,6 +1288,9 @@ export const styles = StyleSheet.create({
 
   newListingContainer: {
     backgroundColor: "#F3F4F6",
+    padding: 16,
+    borderRadius: 8,
+    marginBottom: 15,
   },
 
   photoPriceContent: {
