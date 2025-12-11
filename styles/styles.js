@@ -40,34 +40,15 @@ export const styles = StyleSheet.create({
   // LOGIN/SIGNUP SCREEN STYLES
   loginStyle: {
     flex: 1,
-    padding: 20,
-  },
-
-  loginHeader: {
-    flexDirection: "column",
-    alignItems: "center",
     justifyContent: "center",
-    marginVertical: 20,
-  },
-
-  loginImage: {
-    width: 80,
-    height: 80,
-    marginBottom: 12,
-    marginTop: 15,
-  },
-
-  loginTitle: {
-    flex: 1,
-    fontSize: 28,
-    fontWeight: "700",
+    padding: 24,
   },
 
   inputContainer: {
     backgroundColor: "#F3F4F6",
     padding: 16,
     borderRadius: 8,
-    marginBottom: 70,
+    marginTop: 24,
   },
 
   input: {
@@ -95,8 +76,6 @@ export const styles = StyleSheet.create({
   signUpContainer: {
     alignItems: 'center',
     backgroundColor: '#fff',
-    borderWidth: 1,
-    borderColor: "black",
     padding: 10,
     borderRadius: 10,
   },
@@ -823,111 +802,412 @@ export const styles = StyleSheet.create({
     color: '#9CA3AF',
   },
 
-  completeOrderButton: {
-    backgroundColor: "#d6fec7ff",
-    padding: 8,
-    borderRadius: 6,
-    marginBottom: 8,
-    width: 44,
-    alignItems: "center",
+  // ACCOUNT SETTINGS STYLES
+  settingsForm: {
+    paddingBottom: 24,
   },
 
-  contactCustomerButton: {
-    backgroundColor: "#E5E7EB",
-    marginTop: 10,
-    borderWidth: 1,
-    borderRadius: 5,
-    borderColor: "black"
+  profileIconContainer: {
+    alignItems: 'center',
+    marginVertical: 24,
   },
 
-  contactCustomerText: {
-    fontSize: 15,
-    alignContent: "center",
-    marginLeft: 12,
-    marginTop: 4,
-    marginBottom: 4,
-    color: "#374151",
+  profileIcon: {
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+    backgroundColor: '#93C5FD',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 
-  descriptionInput: {
-    backgroundColor: "#fff",
-    padding: 12,
-    height: 120,
-    borderRadius: 8,
-    marginBottom: 7,
-    borderWidth: 1,
-    borderColor: "#D1D5DB",
+  profileIconText: {
+    fontSize: 40,
   },
 
-  newListingContainer: {
-    backgroundColor: "#F3F4F6",
+  formSection: {
+    backgroundColor: '#fff',
+    borderRadius: 10,
     padding: 16,
-    borderRadius: 8,
-    marginBottom: 15,
-  },
-
-  priceColumn: {
-    flexDirection: "column",
-    width: "55%",
-  },
-
-  priceInput: {
-    backgroundColor: "#fff",
-    padding: 12,
-    borderRadius: 8,
-    marginBottom: 12,
-    borderWidth: 1,
-    borderColor: "#D1D5DB",
-    width: "100%",
-  },
-
-  priceLabel: {
-    fontSize: 16,
-    fontWeight: "600",
-    color: "#374151",
-  },
-
-  photoColumn: {
-    flexDirection: "column",
-    alignItems: "center",
-    width: "30%",
-  },
-
-  photoPriceContent: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    width: "100%",
-    marginTop: 16,
-  },
-
-  photoText: {
-    fontSize: 12,
-    fontWeight: "600",
-    color: "#374151",
-  },
-
-  photoImage: {
-    width: 45,
-    height: 45,
-    marginTop: 3,
-  },
-
-  dateLabel: {
-    fontSize: 14,
-    fontWeight: "600",
-    marginBottom: 6,
-    color: "#374151",
-  },
-
-  dateInputWrapper: {
-    width: "100%",
     marginBottom: 16,
   },
 
-  dateButtonRow: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginTop: 10,
+  formSectionTitle: {
+    fontSize: 18,
+    fontWeight: '700',
+    marginBottom: 16,
+    color: '#374151',
+  },
+
+  inputLabel: {
+    fontSize: 14,
+    fontWeight: '600',
+    color: '#374151',
+    marginBottom: 6,
+    marginTop: 8,
+  },
+
+  updateAccountButton: {
+    backgroundColor: '#86EFAC',
+    padding: 16,
+    borderRadius: 10,
+    alignItems: 'center',
+    marginTop: 8,
+  },
+
+  updateAccountButtonText: {
+    color: '#065F46',
+    fontWeight: '700',
+    fontSize: 16,
+  },
+
+  // ORDER HISTORY STYLES
+  ordersList: {
+    paddingBottom: 16,
+  },
+
+  orderCard: {
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    padding: 16,
+    marginBottom: 12,
+    elevation: 1,
+    shadowOpacity: 0.05,
+    shadowRadius: 3,
+    shadowOffset: { width: 0, height: 1 },
+  },
+
+  orderHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 12,
+  },
+
+  orderDate: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#374151',
+  },
+
+  orderStatusBadge: {
+    paddingHorizontal: 12,
+    paddingVertical: 4,
+    borderRadius: 12,
+  },
+
+  orderStatusDelivered: {
+    backgroundColor: '#D1FAE5',
+  },
+
+  orderStatusCompleted: {
+    backgroundColor: '#DBEAFE',
+  },
+
+  orderStatusText: {
+    fontSize: 12,
+    fontWeight: '600',
+    color: '#065F46',
+  },
+
+  orderItems: {
+    fontSize: 14,
+    color: '#4B5563',
+    marginBottom: 8,
+  },
+
+  orderSeller: {
+    fontSize: 13,
+    color: '#6B7280',
+    marginBottom: 8,
+  },
+
+  orderFooter: {
+    borderTopWidth: 1,
+    borderTopColor: '#E5E7EB',
+    paddingTop: 8,
+    marginTop: 8,
+  },
+
+  orderTotal: {
+    fontSize: 16,
+    fontWeight: '700',
+    color: '#374151',
+    textAlign: 'right',
+  },
+
+  // PAYMENT METHODS STYLES
+  paymentMethodsList: {
+    paddingBottom: 16,
+  },
+
+  paymentCard: {
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    padding: 16,
+    marginBottom: 12,
+    flexDirection: 'row',        // ← ADD THIS
+    alignItems: 'center',        // ← ADD THIS
+    elevation: 1,
+    shadowOpacity: 0.05,
+    shadowRadius: 3,
+    shadowOffset: { width: 0, height: 1 },
+    borderWidth: 1,              // ← ADD THIS
+    borderColor: '#E5E7EB',      // ← ADD THIS
+  },
+
+  paymentCardHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 4,             // ← CHANGE from 12 to 4
+    justifyContent: 'space-between',  // ← ADD THIS
+  },
+
+  paymentCardIcon: {
+    width: 48,
+    height: 48,
+    borderRadius: 8,
+    backgroundColor: '#F3F4F6',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 12,
+  },
+
+
+  paymentCardIconText: {
+    fontSize: 24,
+  },
+
+  paymentCardInfo: {
+    flex: 1,
+  },
+
+  paymentCardType: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#374151',
+    marginBottom: 2,
+  },
+
+  paymentCardNumber: {
+    fontSize: 14,
+    color: '#6B7280',
+    marginBottom: 2,
+  },
+
+  paymentCardExpiry: {
+    fontSize: 12,
+    color: '#9CA3AF',
+  },
+
+  defaultBadge: {
+    backgroundColor: '#DBEAFE',
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 12,
+  },
+
+  defaultBadgeText: {
+    fontSize: 12,
+    fontWeight: '600',
+    color: '#1D4ED8',
+  },
+
+  paymentCardActions: {
+    flexDirection: 'row',
+    gap: 8,
+  },
+
+  setDefaultButton: {
+    flex: 1,
+    backgroundColor: '#E5E7EB',
+    padding: 10,
+    borderRadius: 8,
+    alignItems: 'center',
+  },
+
+  setDefaultButtonText: {
+    fontSize: 14,
+    fontWeight: '600',
+    color: '#374151',
+  },
+
+  removeCardButton: {
+    flex: 1,
+    backgroundColor: '#FEE2E2',
+    padding: 10,
+    borderRadius: 8,
+    alignItems: 'center',
+  },
+
+  removeCardButtonText: {
+    fontSize: 14,
+    fontWeight: '600',
+    color: '#DC2626',
+  },
+
+  addPaymentButton: {
+    backgroundColor: '#E5E7EB',
+    padding: 16,
+    borderRadius: 10,
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginTop: 8,
+  },
+
+  addPaymentButtonIcon: {
+    fontSize: 24,
+    marginRight: 8,
+    color: '#374151',
+  },
+
+  addPaymentButtonText: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#374151',
+  },
+  
+  paymentCardArrow: {
+    fontSize: 24,
+    color: '#9CA3AF',
+    marginLeft: 8,
+  },
+
+  paymentModalCardIcon: {
+    fontSize: 80,
+  },
+
+  setDefaultButtonLarge: {
+    backgroundColor: '#E5E7EB',
+    padding: 14,
+    borderRadius: 8,
+    alignItems: 'center',
+    marginTop: 16,
+  },
+
+  setDefaultButtonTextLarge: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#374151',
+  },
+
+  removeCardButtonLarge: {
+    backgroundColor: '#FEE2E2',
+    padding: 14,
+    borderRadius: 8,
+    alignItems: 'center',
+    marginTop: 12,
+  },
+
+  removeCardButtonTextLarge: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#DC2626',
+  },
+
+
+  // HELP & SUPPORT STYLES
+  helpSupportContent: {
+    paddingBottom: 24,
+  },
+
+  helpSection: {
+    marginBottom: 24,
+  },
+
+  helpSectionTitle: {
+    fontSize: 18,
+    fontWeight: '700',
+    marginBottom: 12,
+    color: '#374151',
+  },
+
+  contactCard: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    padding: 16,
+    marginBottom: 8,
+    elevation: 1,
+    shadowOpacity: 0.05,
+    shadowRadius: 3,
+    shadowOffset: { width: 0, height: 1 },
+  },
+
+  contactIcon: {
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    backgroundColor: '#F3F4F6',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 12,
+  },
+
+  contactIconText: {
+    fontSize: 24,
+  },
+
+  contactInfo: {
+    flex: 1,
+  },
+
+  contactLabel: {
+    fontSize: 14,
+    fontWeight: '600',
+    color: '#374151',
+    marginBottom: 2,
+  },
+
+  contactValue: {
+    fontSize: 14,
+    color: '#6B7280',
+  },
+
+  contactArrow: {
+    fontSize: 24,
+    color: '#9CA3AF',
+  },
+
+  hoursCard: {
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    padding: 16,
+    elevation: 1,
+    shadowOpacity: 0.05,
+    shadowRadius: 3,
+    shadowOffset: { width: 0, height: 1 },
+  },
+
+  hoursText: {
+    fontSize: 14,
+    color: '#374151',
+    marginBottom: 8,
+  },
+
+  faqCard: {
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    padding: 16,
+    marginBottom: 8,
+    elevation: 1,
+    shadowOpacity: 0.05,
+    shadowRadius: 3,
+    shadowOffset: { width: 0, height: 1 },
+  },
+
+  faqQuestion: {
+    fontSize: 15,
+    fontWeight: '600',
+    color: '#374151',
+    marginBottom: 8,
+  },
+
+  faqAnswer: {
+    fontSize: 14,
+    color: '#6B7280',
+    lineHeight: 20,
   },
 });

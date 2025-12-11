@@ -18,22 +18,21 @@ export default function More() {
     router.replace('/startPage');
   };
 
-  const handleAccountSettings = () => {
-    // Placeholder for future implementation
-  };
+const handleAccountSettings = () => {
+  router.push('/(shop)/accountSettings');
+};
 
-  const handleOrderHistory = () => {
-    // Placeholder for future implementation
-  };
+const handleOrderHistory = () => {
+  router.push('/(shop)/orderHistory');
+};
 
-  const handlePaymentMethods = () => {
-    // Placeholder for future implementation
-  };
+const handlePaymentMethods = () => {
+  router.push('/(shop)/paymentMethods');
+};
 
-  const handleHelp = () => {
-    // Placeholder for future implementation
-  };
-
+const handleHelp = () => {
+  router.push('/(shop)/helpSupport');
+};
   return (
     <SafeAreaView style={styles.root}>
       {/* Top app bar */}

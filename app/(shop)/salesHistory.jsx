@@ -137,12 +137,12 @@ export default function SalesHistory() {
                 <TouchableOpacity
                     activeOpacity={1}
                     style={styles.modalOverlay}
-                    onPress={() => setShowFilter(false)}   // <-- close when tapping outside
+                    onPress={() => setShowFilter(false)}   
                 >
                     <TouchableOpacity
                         activeOpacity={1}
                         style={styles.filterModal}
-                        onPress={(e) => e.stopPropagation()} // <-- prevent closing when tapping inside
+                        onPress={(e) => e.stopPropagation()} 
                     >
                         <Text style={styles.filterTitle}>Filter by Category</Text>
 
