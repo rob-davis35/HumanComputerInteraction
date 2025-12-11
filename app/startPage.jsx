@@ -1,5 +1,6 @@
 import { useRouter } from 'expo-router';
 import {
+  Image,
   ImageBackground,
   SafeAreaView,
   Text,
@@ -30,8 +31,9 @@ export default function StartPageScreen() {
 
       <ImageBackground source={image} style={[styles.content, { flex: 1, width: "100%", height: "100%" }]} resizeMode='cover'>
         {/* Login Title */}
-        <View style={styles.sectionHeader}>
-          <Text style={styles.sectionTitle}>Login</Text>
+        <View style={styles.loginHeader}>
+          <Image style={styles.loginImage} source={require('../assets/fish.png')} />
+          <Text style={styles.loginTitle}>Login</Text>
         </View>
 
         <View style={styles.loginStyle}>

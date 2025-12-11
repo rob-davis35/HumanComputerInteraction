@@ -82,17 +82,18 @@ export default function SignUpPage({ onStart }) {
             <ImageBackground source={image} style={[styles.content, { flex: 1, width: "100%", height: "100%" }]} resizeMode='cover'>
                 {/* Sign Up Title */}
                 <View style={styles.sectionHeader}>
-                    <>
-                        <TouchableOpacity
-                            onPress={() => handleBack()}
-                            style={styles.backButton}
-                        >
-                            <Text style={styles.backArrow}>‹</Text>
-                        </TouchableOpacity>
-                        <Text style={styles.sectionTitle}>
-                            Sign Up
-                        </Text>
-                    </>
+                    <TouchableOpacity
+                        onPress={() => handleBack()}
+                        style={styles.backButton}
+                    >
+                        <Text style={styles.backArrow}>‹</Text>
+                    </TouchableOpacity>
+                </View>
+
+                <View style={styles.loginHeader}>
+                    <Text style={styles.loginTitle}>
+                        Sign Up
+                    </Text>
                 </View>
 
                 <KeyboardAvoidingView

@@ -40,8 +40,27 @@ export const styles = StyleSheet.create({
   // LOGIN/SIGNUP SCREEN STYLES
   loginStyle: {
     flex: 1,
+    padding: 20,
+  },
+
+  loginHeader: {
+    flexDirection: "column",
+    alignItems: "center",
     justifyContent: "center",
-    padding: 24,
+    marginVertical: 20,
+  },
+
+  loginImage: {
+    width: 80,
+    height: 80,
+    marginBottom: 12,
+    marginTop: 15,
+  },
+
+  loginTitle: {
+    flex: 1,
+    fontSize: 28,
+    fontWeight: "700",
   },
 
   inputContainer: {

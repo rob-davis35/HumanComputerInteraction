@@ -1,6 +1,7 @@
 import { useRouter } from 'expo-router';
 import { useState } from "react";
 import {
+  Image,
   ImageBackground,
   KeyboardAvoidingView,
   Platform,
@@ -63,17 +64,19 @@ export default function LoginScreen() {
       <ImageBackground source={image} style={[styles.content, { flex: 1, width: "100%", height: "100%" }]} resizeMode='cover'>
         {/* Login Title */}
         <View style={styles.sectionHeader}>
-          <>
-            <TouchableOpacity
-              onPress={() => handleBack()}
-              style={styles.backButton}
-            >
-              <Text style={styles.backArrow}>‹</Text>
-            </TouchableOpacity>
-            <Text style={styles.sectionTitle}>
-              Store Owner Login
-            </Text>
-          </>
+          <TouchableOpacity
+            onPress={() => handleBack()}
+            style={styles.backButton}
+          >
+            <Text style={styles.backArrow}>‹</Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.loginHeader}>
+          <Image style={styles.loginImage} source={require('../assets/fish.png')} />
+          <Text style={styles.loginTitle}>
+            Store Owner Login
+          </Text>
         </View>
 
         {/* Makes it so the keyboard doesn't cover inputs */}
