@@ -2,6 +2,7 @@ import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useState } from "react";
 import {
   Alert,
+  Image,
   Modal,
   SafeAreaView,
   ScrollView,
@@ -17,9 +18,18 @@ import { styles } from '../../../styles/styles';
 function ListingCard({ item, onPress }) {
   return (
     <TouchableOpacity style={styles.listItem} onPress={onPress}>
-      <View style={styles.listImagePlaceholder}>
-        <Text style={styles.cardX}>✕</Text>
-      </View>
+      {/* Replace placeholder with image */}
+      {item.image ? (
+        <Image 
+          source={item.image}
+          style={styles.listImagePlaceholder}
+          resizeMode="cover"
+        />
+      ) : (
+        <View style={styles.listImagePlaceholder}>
+          <Text style={styles.cardX}>✕</Text>
+        </View>
+      )}
       <View style={styles.listTextContainer}>
         <Text style={styles.listTitle}>{item.name}</Text>
         <Text style={styles.listPrice}>{item.price}</Text>

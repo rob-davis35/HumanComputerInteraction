@@ -224,16 +224,18 @@ export const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 1 },
   },
 
-  cardImagePlaceholder: {
-    height: 90,
-    borderRadius: 8,
-    borderWidth: 1,
-    borderColor: "#D1D5DB",
-    justifyContent: "center",
-    alignItems: "center",
-    marginBottom: 6,
-  },
-
+cardImagePlaceholder: {
+  width: '100%',           
+  height: 90,
+  borderRadius: 8,
+  borderWidth: 1,
+  borderColor: "#D1D5DB",
+  justifyContent: "center",
+  alignItems: "center",
+  marginBottom: 6,
+  overflow: 'hidden',     
+  backgroundColor: '#F9FAFB',  
+},
   cardX: {
     fontSize: 24,
     color: "#D1D5DB",

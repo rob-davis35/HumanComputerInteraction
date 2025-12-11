@@ -1,6 +1,7 @@
 import { useRouter } from 'expo-router';
 import { useState } from "react";
 import {
+  Image,
   Modal,
   SafeAreaView,
   ScrollView,
@@ -12,12 +13,21 @@ import SettingsMenu from '../../components/settingsWheel';
 import { CATEGORIES } from '../../constants/listings';
 import { styles } from '../../styles/styles';
 
-function CategoryCard({ label, onPress }) {
+function CategoryCard({ label, image, onPress }) {
   return (
     <TouchableOpacity style={styles.card} onPress={onPress}>
-      <View style={styles.cardImagePlaceholder}>
-        <Text style={styles.cardX}>✕</Text>
-      </View>
+      {/* If image exists, show it. Otherwise show placeholder */}
+      {image ? (
+        <Image 
+          source={image}
+          style={styles.cardImagePlaceholder}
+          resizeMode="cover"
+        />
+      ) : (
+        <View style={styles.cardImagePlaceholder}>
+          <Text style={styles.cardX}>✕</Text>
+        </View>
+      )}
       <Text style={styles.cardLabel}>{label}</Text>
     </TouchableOpacity>
   );
@@ -27,6 +37,16 @@ export default function ShopIndex() {
   const router = useRouter();
   const [showFilter, setShowFilter] = useState(false);
   const [selectedCategories, setSelectedCategories] = useState(CATEGORIES); 
+
+  // Category images mapping
+  const categoryImages = {
+    "White Fish": require('../../assets/fish/whitefish.png'),
+    "Oily Fish": require('../../assets/fish/oilyfish.png'),
+    "Flatfish": require('../../assets/fish/flatfish.png'),
+    "Shellfish": require('../../assets/fish/shellfish.png'),
+    "Cephalopods": require('../../assets/fish/cephalopods.png'),
+    "Mollusc": require('../../assets/fish/mollusc.png'),
+  };
 
   const toggleCategory = (category) => {
     if (selectedCategories.includes(category)) {
@@ -65,6 +85,7 @@ export default function ShopIndex() {
             <CategoryCard
               key={name}
               label={name}
+              image={categoryImages[name]}  // ← PASSING IMAGE HERE
               onPress={() => router.push(`/category/listings?name=${name}`)}
             />
           ))}
