@@ -84,10 +84,18 @@ export default function SalesHistory() {
             <View style={styles.content}>
                 {/* Section header */}
                 <View style={styles.sectionHeader}>
-                    <TouchableOpacity onPress={handleBack} style={[styles.sectionTitle, { flexDirection: "row", alignItems: "center" }]}>
-                        <Text style={styles.backArrow}>‹</Text>
-                        <Text style={styles.sectionTitle}>Sales History - The Shrimp Hoarders</Text>
-                    </TouchableOpacity>
+
+                    <>
+                        <TouchableOpacity
+                            onPress={() => handleBack()}
+                            style={styles.backButton}
+                        >
+                            <Text style={styles.backArrow}>‹</Text>
+                        </TouchableOpacity>
+                        <Text style={styles.sectionTitle}>
+                            Sales History - The Shrimp Hoarders
+                        </Text>
+                    </>
 
                     {/* Filter Date Button */}
                     <TouchableOpacity

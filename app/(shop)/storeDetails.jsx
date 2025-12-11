@@ -46,14 +46,16 @@ export default function storeDetails() {
                     </TouchableOpacity>
 
                     <TouchableOpacity
-                        style={styles.shopFrontMenuItem}>
+                        style={styles.shopFrontMenuItem}
+                        onPress={() => router.push('/(shop)/currentOrders')}>
                         <Text style={styles.shopFrontMenuText}>Check Off Orders</Text>
                         <Text style={styles.shopFrontMenuArrow}>📦</Text>
                         <Text style={styles.shopFrontMenuArrow}>›</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity
-                        style={styles.shopFrontMenuItem}>
+                        style={styles.shopFrontMenuItem}
+                        onPress={() => router.push('/(shop)/newListing')}>
                         <Text style={styles.shopFrontMenuText}>New Listing</Text>
                         <Text style={styles.shopFrontMenuArrow}>➕</Text>
                         <Text style={styles.shopFrontMenuArrow}>›</Text>

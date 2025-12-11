@@ -50,7 +50,7 @@ export default function LoginScreen() {
       return;
     }
 
-    router.replace('/(shop)');
+    router.replace('/(shop)/storeDetails');
   };
 
   return (

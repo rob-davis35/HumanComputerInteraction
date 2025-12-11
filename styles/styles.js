@@ -801,4 +801,93 @@ export const styles = StyleSheet.create({
     fontSize: 24,
     color: '#9CA3AF',
   },
+
+  completeOrderButton: {
+    backgroundColor: "#d6fec7ff",
+    padding: 8,
+    borderRadius: 6,
+    marginBottom: 8,
+    width: 44,
+    alignItems: "center",
+  },
+
+  contactCustomerButton: {
+    backgroundColor: "#E5E7EB",
+    marginTop: 10,
+    borderWidth: 1,
+    borderRadius: 5,
+    borderColor: "black"
+  },
+
+  contactCustomerText: {
+    fontSize: 15,
+    alignContent: "center",
+    marginLeft: 12,
+    marginTop: 4,
+    marginBottom: 4,
+    color: "#374151",
+  },
+
+  descriptionInput: {
+    backgroundColor: "#fff",
+    padding: 12,
+    height: 120,
+    borderRadius: 8,
+    marginBottom: 12,
+    borderWidth: 1,
+    borderColor: "#D1D5DB",
+  },
+
+  newListingContainer: {
+    backgroundColor: "#F3F4F6",
+    padding: 16,
+    borderRadius: 8,
+    marginBottom: 15,
+  },
+
+  priceColumn: {
+    flexDirection: "column",
+    width: "55%",
+  },
+
+  priceInput: {
+    backgroundColor: "#fff",
+    padding: 12,
+    borderRadius: 8,
+    marginBottom: 12,
+    borderWidth: 1,
+    borderColor: "#D1D5DB",
+    width: "100%",
+  },
+
+  priceLabel: {
+    fontSize: 16,
+    fontWeight: "600",
+    color: "#374151",
+  },
+
+  photoColumn: {
+    flexDirection: "column",
+    alignItems: "center",
+    width: "30%",
+  },
+
+  photoPriceContent: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    width: "100%",
+    marginTop: 16,
+  },
+
+  photoText: {
+    fontSize: 12,
+    fontWeight: "600",
+    color: "#374151",
+  },
+
+  photoImage: {
+    width: 80,
+    height: 80,
+  },
 });

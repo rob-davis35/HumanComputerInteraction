@@ -22,6 +22,7 @@ export default function SignUpPage({ onStart }) {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
+    const [phoneNumber, setPhoneNumber] = useState("");
     const [password, setPassword] = useState("");
     const [accountType, setAccountType] = useState("");
 
@@ -41,7 +42,7 @@ export default function SignUpPage({ onStart }) {
     };
 
     // Simple sign up validation
-    const handleSignUp = (firstName, lastName, email, password, accountType) => {
+    const handleSignUp = (firstName, lastName, email, phoneNumber, password, accountType) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
         if (!firstName || !lastName) {
@@ -52,6 +53,10 @@ export default function SignUpPage({ onStart }) {
         if (!emailRegex.test(email)) {
             showMessage("warning", "Please enter a valid email address.");
             return;
+        }
+
+        if (phoneNumber.length != 11) {
+            showMessage("warning", "Please enter a valid phone number")
         }
 
         if (password.length === 0) {
@@ -119,6 +124,14 @@ export default function SignUpPage({ onStart }) {
                             onChangeText={setEmail}
                         />
 
+                        {/* Phone Number Input */}
+                        <TextInput
+                            style={styles.input}
+                            placeholder="Phone Number"
+                            value={phoneNumber}
+                            onChangeText={setPhoneNumber}
+                        />
+
                         {/* Password Input */}
                         <TextInput
                             style={styles.input}
@@ -143,7 +156,7 @@ export default function SignUpPage({ onStart }) {
                         {/* Sign Up Button */}
                         <TouchableOpacity
                             style={styles.loginButton}
-                            onPress={() => handleSignUp(firstName, lastName, email, password, accountType)}>
+                            onPress={() => handleSignUp(firstName, lastName, email, phoneNumber, password, accountType)}>
                             <Text style={styles.loginButtonText}>Sign Up</Text>
                         </TouchableOpacity>
 

@@ -190,12 +190,15 @@ export default function Basket() {
         }
     };
 
-    const filteredCategories = CATEGORIES.filter(cat => selectedCategories.includes(cat));
+    const filteredList = activeListingItems.filter(item => selectedCategories.includes(item.type));
 
     const handleDelete = (itemId) => {
         setActiveListingItems(activeListingItems.filter(item => item.id !== itemId));
     };
 
+    const handleBack = () => {
+        router.replace('/(shop)/storeDetails');
+    }
 
     return (
         <SafeAreaView style={styles.root}>
@@ -209,7 +212,18 @@ export default function Basket() {
             <View style={styles.content}>
                 {/* Section header */}
                 <View style={styles.sectionHeader}>
-                    <Text style={styles.sectionTitle}>Active Listings - The Shrimp Hoarders</Text>
+
+                    <>
+                        <TouchableOpacity
+                            onPress={() => handleBack()}
+                            style={styles.backButton}
+                        >
+                            <Text style={styles.backArrow}>‹</Text>
+                        </TouchableOpacity>
+                        <Text style={styles.sectionTitle}>
+                            Active Listings - The Shrimp Hoarders
+                        </Text>
+                    </>
 
                     {/* Filter Button */}
                     <TouchableOpacity
@@ -226,7 +240,7 @@ export default function Basket() {
                             <Text style={styles.emptyBasketText}>You have no active listings</Text>
                         </View>
                     ) : (
-                        activeListingItems.map((item) => (
+                        filteredList.map((item) => (
                             <View key={item.id} style={styles.basketItem}>
                                 {/* Image */}
                                 <View style={styles.basketItemImage}>

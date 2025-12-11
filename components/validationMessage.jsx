@@ -15,7 +15,7 @@ export default function ValidationMessage({
     const backgroundColor = {
         error: "#ff0015ff",
         warning: "#ff9100ff",
-        success: "#00ff3cff",
+        success: "#3acc5cff",
     }[type];
 
     useEffect(() => {
