@@ -1,12 +1,16 @@
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
 import { Modal, ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import { useAuth } from '../context/AuthContext';
 import { styles } from '../styles/styles';
 
 export default function SettingsMenu() {
   const router = useRouter();
+  const { logout } = useAuth();
+  
   const [showSettingsModal, setShowSettingsModal] = useState(false);
   const [showLanguageModal, setShowLanguageModal] = useState(false);
+  
   const languages = [
     'English',
     'Spanish',
@@ -39,6 +43,7 @@ export default function SettingsMenu() {
 
   const handleSignOut = () => {
     setShowSettingsModal(false);
+    logout();
     router.replace('/startPage');
   };
 

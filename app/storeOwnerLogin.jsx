@@ -11,10 +11,12 @@ import {
   View
 } from "react-native";
 import ValidationMessage from '../components/validationMessage';
+import { useAuth } from '../context/AuthContext';
 import { styles } from '../styles/styles';
 
 export default function LoginScreen() {
   const router = useRouter();
+  const { login } = useAuth();
 
   const image = require('../assets/ocean-sea-waves-ripples-water-background.png');
 
@@ -34,7 +36,7 @@ export default function LoginScreen() {
 
   const handleBack = () => {
     router.replace('/startPage');
-  }
+  };
 
   // Simple email and password validation
   const handleLogin = (username, password) => {
@@ -50,6 +52,10 @@ export default function LoginScreen() {
       return;
     }
 
+    // Set user type as 'fishmonger'
+    console.log('About to call login with fishmonger'); 
+    login(username, password, 'fishmonger');
+    console.log('Login called, navigating to shop');
     router.replace('/(shop)');
   };
 
@@ -81,7 +87,6 @@ export default function LoginScreen() {
           behavior={Platform.OS === "ios" ? "padding" : "height"}
           style={styles.loginStyle}
         >
-
           <View style={styles.inputContainer}>
             {/* Email Input */}
             <TextInput
@@ -113,9 +118,7 @@ export default function LoginScreen() {
               onPress={() => router.push('/signup')}>
               <Text style={styles.sUText}>Sign Up</Text>
             </TouchableOpacity>
-
           </View>
-
         </KeyboardAvoidingView>
       </ImageBackground>
 
@@ -125,7 +128,6 @@ export default function LoginScreen() {
         message={validationText}
         onHide={() => setValidationMessage(false)}
       />
-
     </SafeAreaView>
   );
 }

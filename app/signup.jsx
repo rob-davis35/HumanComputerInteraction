@@ -12,10 +12,12 @@ import {
 } from "react-native";
 import Radio from '../components/signUpRadio';
 import ValidationMessage from '../components/validationMessage';
+import { useAuth } from '../context/AuthContext';
 import { styles } from '../styles/styles';
 
 export default function SignUpPage({ onStart }) {
     const router = useRouter();
+    const { login } = useAuth();
 
     const image = require('../assets/ocean-sea-waves-ripples-water-background.png');
 
@@ -64,7 +66,9 @@ export default function SignUpPage({ onStart }) {
             return;
         }
 
-        router.replace('/startPage');
+        // Register and log in with the selected account type
+        login(email, password, accountType);
+        router.replace('/(shop)');
     }
 
     return (
