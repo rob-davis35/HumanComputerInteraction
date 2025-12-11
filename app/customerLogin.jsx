@@ -12,17 +12,18 @@ import {
   View
 } from "react-native";
 import ValidationMessage from '../components/validationMessage';
+import { useAuth } from '../context/AuthContext';
 import { styles } from '../styles/styles';
 
 export default function LoginScreen() {
   const router = useRouter();
+  const { login } = useAuth();
 
   const image = require('../assets/ocean-sea-waves-ripples-water-background.png');
 
   const [customerEmail, setCustomerEmail] = useState("");
   const [customerPassword, setCustomerPassword] = useState("");
 
-  // Validation message state
   const [validationMessage, setValidationMessage] = useState(false);
   const [validationText, setValidationText] = useState("");
   const [validationType, setValidationType] = useState("error");
@@ -37,7 +38,6 @@ export default function LoginScreen() {
     router.replace('/startPage');
   };
 
-  // Simple email and password validation
   const handleLogin = (username, password) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -51,19 +51,18 @@ export default function LoginScreen() {
       return;
     }
 
+    // Set user type as 'customer'
+    login(username, password, 'customer');
     router.replace('/(shop)');
   };
 
   return (
     <SafeAreaView style={styles.root}>
-      {/* Top app bar */}
       <View style={styles.appBar}>
         <Text style={styles.appBarTitle}>Billingsgate Exchange</Text>
       </View>
 
       <ImageBackground source={image} style={[styles.content, { flex: 1, width: "100%", height: "100%" }]} resizeMode='cover'>
-        {/* Login Title */}
-
         <View style={styles.sectionHeader}>
           <>
             <TouchableOpacity
@@ -82,14 +81,11 @@ export default function LoginScreen() {
           </Text>
         </View>
 
-        {/* Makes it so the keyboard doesn't cover inputs */}
         <KeyboardAvoidingView
           behavior={Platform.OS === "ios" ? "padding" : "height"}
           style={styles.loginStyle}
         >
-
           <View style={styles.inputContainer}>
-            {/* Email Input */}
             <TextInput
               style={styles.input}
               placeholder="Email"
@@ -97,7 +93,6 @@ export default function LoginScreen() {
               onChangeText={setCustomerEmail}
             />
 
-            {/* Password Input */}
             <TextInput
               style={styles.input}
               placeholder="Password"
@@ -106,7 +101,6 @@ export default function LoginScreen() {
               secureTextEntry
             />
 
-            {/* Login Button */}
             <TouchableOpacity
               style={styles.loginButton}
               onPress={() => handleLogin(customerEmail, customerPassword)}>
@@ -119,7 +113,6 @@ export default function LoginScreen() {
               onPress={() => router.push('/signup')}>
               <Text style={styles.sUText}>Sign Up</Text>
             </TouchableOpacity>
-
           </View>
         </KeyboardAvoidingView>
       </ImageBackground>
@@ -130,7 +123,6 @@ export default function LoginScreen() {
         message={validationText}
         onHide={() => setValidationMessage(false)}
       />
-
     </SafeAreaView>
   );
 }

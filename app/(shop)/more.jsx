@@ -1,28 +1,38 @@
 import { useRouter } from 'expo-router';
 import {
-    SafeAreaView,
-    Text,
-    TouchableOpacity,
-    View
+  SafeAreaView,
+  Text,
+  TouchableOpacity,
+  View
 } from "react-native";
 import SettingsMenu from '../../components/settingsWheel';
+import { useAuth } from '../../context/AuthContext';
 import { styles } from '../../styles/styles';
 
 export default function More() {
   const router = useRouter();
+  const { logout } = useAuth();
   
-const handleSignOut = () => {
-  router.replace('/login');
-};
+  const handleSignOut = () => {
+    logout();
+    router.replace('/startPage');
+  };
 
-const handleAccountSettings = () => {
-};
-const handleOrderHistory = () => {
-};
-const handlePaymentMethods = () => {
-};
-const handleHelp = () => {
-};
+  const handleAccountSettings = () => {
+    // Placeholder for future implementation
+  };
+
+  const handleOrderHistory = () => {
+    // Placeholder for future implementation
+  };
+
+  const handlePaymentMethods = () => {
+    // Placeholder for future implementation
+  };
+
+  const handleHelp = () => {
+    // Placeholder for future implementation
+  };
 
   return (
     <SafeAreaView style={styles.root}>

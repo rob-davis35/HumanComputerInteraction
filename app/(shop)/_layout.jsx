@@ -1,10 +1,14 @@
 import { Stack, usePathname, useRouter } from 'expo-router';
 import { Text, TouchableOpacity, View } from 'react-native';
+import { useAuth } from '../../context/AuthContext';
 import { styles } from '../../styles/styles';
 
 export default function ShopLayout() {
   const router = useRouter();
   const pathname = usePathname();
+  const { userType } = useAuth(); 
+  
+  console.log('Current userType:', userType);
 
   return (
     <>
@@ -64,19 +68,22 @@ export default function ShopLayout() {
           {pathname === '/alerts' && <View style={styles.navIndicator} />}
         </TouchableOpacity>
 
-        <TouchableOpacity
-          style={styles.navItem}
-          onPress={() => router.push('/(shop)/storeDetails')}>
-          <Text style={[
-            styles.navIcon,
-            pathname === '/storeDetails' && styles.navIconActive
-          ]}>🏪</Text>
-          <Text style={[
-            styles.navLabel,
-            pathname === '/storeDetails' && styles.navLabelActive
-          ]}>Store Front</Text>
-          {pathname === '/storeDetails' && <View style={styles.navIndicator} />}
-        </TouchableOpacity>
+        {/* Will only show storefront option if userType is 'fishmonger' */}
+        {userType === 'fishmonger' && (
+          <TouchableOpacity
+            style={styles.navItem}
+            onPress={() => router.push('/(shop)/storeDetails')}>
+            <Text style={[
+              styles.navIcon,
+              pathname === '/storeDetails' && styles.navIconActive
+            ]}>🏪</Text>
+            <Text style={[
+              styles.navLabel,
+              pathname === '/storeDetails' && styles.navLabelActive
+            ]}>Store Front</Text>
+            {pathname === '/storeDetails' && <View style={styles.navIndicator} />}
+          </TouchableOpacity>
+        )}
 
         <TouchableOpacity
           style={styles.navItem}
