@@ -44,6 +44,24 @@ export const styles = StyleSheet.create({
     padding: 24,
   },
 
+    loginHeader: {
+    alignItems: 'center',
+    marginVertical: 20,
+  },
+
+  loginImage: {
+    width: 60,      
+    height: 60,     
+    marginBottom: 12,
+  },
+
+  loginTitle: {
+    fontSize: 24,
+    fontWeight: '700',
+    color: '#374151',
+    textAlign: 'center',
+  },
+
   inputContainer: {
     backgroundColor: "#F3F4F6",
     padding: 16,
