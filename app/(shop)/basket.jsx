@@ -93,6 +93,9 @@ export default function Basket() {
 
   const handleDelete = (itemId) => {
     setBasketItems(basketItems.filter(item => item.id !== itemId));
+
+    showMessage("error", "Order Deleted");
+    return;
   };
 
   const handleFinishAndPay = () => {
