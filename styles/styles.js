@@ -44,14 +44,14 @@ export const styles = StyleSheet.create({
     padding: 24,
   },
 
-    loginHeader: {
+  loginHeader: {
     alignItems: 'center',
     marginVertical: 20,
   },
 
   loginImage: {
-    width: 60,      
-    height: 60,     
+    width: 60,
+    height: 60,
     marginBottom: 12,
   },
 
@@ -597,6 +597,14 @@ export const styles = StyleSheet.create({
     alignItems: "center",
   },
 
+  completeOrderButton: {
+    backgroundColor: "#dcfcd3ff",
+    padding: 8,
+    borderRadius: 6,
+    width: 44,
+    alignItems: "center",
+  },
+
   deleteButtonText: {
     fontSize: 20,
   },
@@ -1085,7 +1093,7 @@ export const styles = StyleSheet.create({
     fontWeight: '600',
     color: '#374151',
   },
-  
+
   paymentCardArrow: {
     fontSize: 24,
     color: '#9CA3AF',
