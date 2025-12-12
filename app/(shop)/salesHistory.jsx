@@ -65,13 +65,6 @@ export default function SalesHistory() {
                 dateSold: "2024-06-11",
                 image: require('../../assets/fish/salmonfishmonger.png'),
             },
-            {
-                id: 9,
-                itemName: "Clams",
-                quantitySold: 180,
-                totalPrice: "£540.00",
-                dateSold: "2024-06-04"
-            }
         ]
     };
 

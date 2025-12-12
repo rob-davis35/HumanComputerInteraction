@@ -38,15 +38,6 @@ export default function Basket() {
             phoneNumber: "07924679152",
             image: require('../../assets/fish/salmonfishmonger.png'),
         },
-        {
-            id: 3,
-            name: "Haddock",
-            quantity: 180,
-            time: "9:30am - 05/02/2026",
-            price: "£320",
-            customer: "Sarah Thompson",
-            phoneNumber: "07855432910"
-        },
     ]);
 
     // Validation message state
@@ -123,7 +114,7 @@ export default function Basket() {
                             <View key={item.id} style={styles.basketItem}>
                                 {/* Image */}
                                 {item.image ? (
-                                    <Image 
+                                    <Image
                                         source={item.image}
                                         style={styles.basketItemImage}
                                         resizeMode="cover"
