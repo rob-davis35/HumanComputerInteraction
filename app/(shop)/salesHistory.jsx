@@ -20,44 +20,92 @@ export default function SalesHistory() {
     const [showFilter, setShowFilter] = useState(false);
     const [showDateFilter, setShowDateFilter] = useState(false);
 
-    const VALID_CATEGORIES = CATEGORIES.filter(c => ["Shellfish", "White Fish"].includes(c));
+    const VALID_CATEGORIES = CATEGORIES.filter(c => ["Shellfish", "White Fish", "Oily Fish", "Flatfish", "Cephalopods", "Mollusc"].includes(c));
 
     const [selectedCategories, setSelectedCategories] = useState(VALID_CATEGORIES);
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
 
     const SALES_LISTINGS = {
-        "Shellfish": [
+        "White Fish": [
             {
                 id: 1,
-                itemName: "Tuna Steak",
-                quantitySold: 30,
-                totalPrice: "£450.00",
-                dateSold: "2023-02-07"
+                itemName: "Cod Fillet",
+                quantitySold: 120,
+                totalPrice: "£720.00",
+                dateSold: "2024-04-02"
             },
             {
                 id: 2,
-                itemName: "Shrimp",
-                quantitySold: 475,
-                totalPrice: "£600.00",
-                dateSold: "2023-02-13"
-            },
+                itemName: "Haddock Portion",
+                quantitySold: 90,
+                totalPrice: "£540.00",
+                dateSold: "2024-04-05"
+            }
         ],
-        "White Fish": [
+
+        "Oily Fish": [
             {
                 id: 3,
-                itemName: "Lobster Tail",
-                quantitySold: 50,
-                totalPrice: "£500.00",
-                dateSold: "2024-06-10"
+                itemName: "Mackerel",
+                quantitySold: 150,
+                totalPrice: "£675.00",
+                dateSold: "2024-03-18"
             },
             {
                 id: 4,
-                itemName: "Salmon Fillet",
-                quantitySold: 100,
-                totalPrice: "£800.00",
-                dateSold: "2024-06-11"
+                itemName: "Sardines",
+                quantitySold: 200,
+                totalPrice: "£500.00",
+                dateSold: "2024-03-21"
+            }
+        ],
+
+        "Flatfish": [
+            {
+                id: 5,
+                itemName: "Plaice",
+                quantitySold: 70,
+                totalPrice: "£420.00",
+                dateSold: "2024-02-11"
+            }
+        ],
+
+        "Shellfish": [
+            {
+                id: 6,
+                itemName: "King Prawns",
+                quantitySold: 300,
+                totalPrice: "£900.00",
+                dateSold: "2024-05-12"
+            }
+        ],
+
+        "Cephalopods": [
+            {
+                id: 7,
+                itemName: "Squid Rings",
+                quantitySold: 160,
+                totalPrice: "£640.00",
+                dateSold: "2024-01-27"
+            }
+        ],
+
+        "Mollusc": [
+            {
+                id: 8,
+                itemName: "Mussels",
+                quantitySold: 250,
+                totalPrice: "£750.00",
+                dateSold: "2024-06-03"
             },
+            {
+                id: 9,
+                itemName: "Clams",
+                quantitySold: 180,
+                totalPrice: "£540.00",
+                dateSold: "2024-06-04"
+            }
         ]
     };
 
@@ -137,12 +185,12 @@ export default function SalesHistory() {
                 <TouchableOpacity
                     activeOpacity={1}
                     style={styles.modalOverlay}
-                    onPress={() => setShowFilter(false)}   
+                    onPress={() => setShowFilter(false)}
                 >
                     <TouchableOpacity
                         activeOpacity={1}
                         style={styles.filterModal}
-                        onPress={(e) => e.stopPropagation()} 
+                        onPress={(e) => e.stopPropagation()}
                     >
                         <Text style={styles.filterTitle}>Filter by Category</Text>
 

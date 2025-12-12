@@ -31,21 +31,51 @@ export default function AlertsPage() {
         {
             id: 2,
             title: "New Feature Release",
-            description: "You can now manage your shop pricing directly in the app!",
+            description: "You can now track your seafood orders in real time!",
             date: "2024-02-12"
         },
         {
             id: 3,
-            title: "Order Volume Spike",
-            description: "You received 20% more orders than usual today.",
+            title: "Special Discount",
+            description: "Enjoy 15% off select fresh catches this weekend.",
             date: "2024-06-10"
         },
         {
             id: 4,
             title: "Security Notice",
-            description: "Password update recommended for all users.",
+            description: "We recommend updating your password for enhanced security.",
             date: "2024-06-11"
         },
+        {
+            id: 5,
+            title: "Order Shipped",
+            description: "Your latest seafood order has been shipped and is on its way!",
+            date: "2024-07-02"
+        },
+        {
+            id: 6,
+            title: "Delivery Reminder",
+            description: "Your order is scheduled for delivery tomorrow. Please ensure someone is available to receive it.",
+            date: "2024-07-05"
+        },
+        {
+            id: 7,
+            title: "Price Drop Alert",
+            description: "Yellowfin tuna prices have dropped today. Perfect time to buy!",
+            date: "2024-07-08"
+        },
+        {
+            id: 8,
+            title: "Restock Notification",
+            description: "Fresh Blue Crab is back in stock!",
+            date: "2024-07-10"
+        },
+        {
+            id: 9,
+            title: "New Shop Added",
+            description: "A highly rated seafood vendor has joined the marketplace.",
+            date: "2024-07-11"
+        }
     ];
 
     // Date Filtering

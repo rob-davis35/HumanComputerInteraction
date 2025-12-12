@@ -35,6 +35,15 @@ export default function Basket() {
             customer: "Jacob Owens",
             phoneNumber: "07924679152"
         },
+        {
+            id: 3,
+            name: "Haddock",
+            quantity: 180,
+            time: "9:30am - 05/02/2026",
+            price: "£320",
+            customer: "Sarah Thompson",
+            phoneNumber: "07855432910"
+        },
     ]);
 
     // Validation message state
