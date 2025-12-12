@@ -1,5 +1,6 @@
 import { useRouter } from 'expo-router';
 import {
+    Image,
     SafeAreaView,
     ScrollView,
     Text,
@@ -20,7 +21,8 @@ export default function OrderHistory() {
             items: "5kg Cod, 2kg Haddock, 1kg Prawns",
             total: "£67.50",
             status: "Delivered",
-            seller: "Keith's Emporium"
+            seller: "Keith's Emporium",
+            image: require('../../assets/fish/codfishmonger.png'),
         },
         {
             id: 2,
@@ -28,7 +30,8 @@ export default function OrderHistory() {
             items: "3kg Salmon, 4kg Mackerel",
             total: "£45.80",
             status: "Delivered",
-            seller: "Fish Guys"
+            seller: "Fish Guys",
+            image: require('../../assets/fish/salmonfishmonger.png'),
         },
         {
             id: 3,
@@ -36,7 +39,8 @@ export default function OrderHistory() {
             items: "2kg Lobster Tail, 1kg Crab",
             total: "£89.00",
             status: "Delivered",
-            seller: "Shells & Tails"
+            seller: "Shells & Tails",
+            image: require('../../assets/fish/lobsterfishmonger.png'),
         },
         {
             id: 4,
@@ -44,7 +48,8 @@ export default function OrderHistory() {
             items: "10kg Plaice, 5kg Sole",
             total: "£112.50",
             status: "Delivered",
-            seller: "Plaice Palace"
+            seller: "Plaice Palace",
+            image: require('../../assets/fish/plaicefishmonger.png'),
         },
         {
             id: 5,
@@ -52,7 +57,8 @@ export default function OrderHistory() {
             items: "3kg Tuna, 2kg Swordfish",
             total: "£78.20",
             status: "Delivered",
-            seller: "Ocean Fresh"
+            seller: "Ocean Fresh",
+            image: require('../../assets/fish/tunafishmonger.png'),
         },
         {
             id: 6,
@@ -60,7 +66,8 @@ export default function OrderHistory() {
             items: "5kg Mussels, 3kg Clams, 2kg Oysters",
             total: "£54.30",
             status: "Completed",
-            seller: "Harbour Shellfish"
+            seller: "Harbour Shellfish",
+            image: require('../../assets/fish/musselsfishmonger.png'),
         }
     ];
 
@@ -93,10 +100,18 @@ export default function OrderHistory() {
                 <ScrollView contentContainerStyle={styles.ordersList}>
                     {orders.map((order) => (
                         <View key={order.id} style={styles.basketItem}>
-                            {/* Image Placeholder */}
-                            <View style={styles.basketItemImage}>
-                                <Text style={styles.cardX}>✕</Text>
-                            </View>
+                            {/* Image - UPDATED */}
+                            {order.image ? (
+                                <Image 
+                                    source={order.image}
+                                    style={styles.basketItemImage}
+                                    resizeMode="cover"
+                                />
+                            ) : (
+                                <View style={styles.basketItemImage}>
+                                    <Text style={styles.cardX}>✕</Text>
+                                </View>
+                            )}
 
                             {/* Order Info */}
                             <View style={styles.basketItemInfo}>

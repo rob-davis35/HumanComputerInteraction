@@ -2,6 +2,7 @@ import { useRouter } from 'expo-router';
 import { useState } from "react";
 import {
   Alert,
+  Image,
   Modal,
   SafeAreaView,
   ScrollView,
@@ -24,7 +25,8 @@ export default function Basket() {
       quantity: 100,
       price: "£200.51",
       stall: "Crab World",
-      location: "C1.05"
+      location: "C1.05",
+      image: require('../../assets/fish/crablisting.png'),  
     },
     {
       id: 2,
@@ -32,7 +34,8 @@ export default function Basket() {
       quantity: 500,
       price: "£200.51",
       stall: "The Shrimp Hoarders",
-      location: "S2.10"
+      location: "S2.10",
+      image: require('../../assets/fish/shrimplisting.png'),  
     },
     {
       id: 3,
@@ -40,7 +43,8 @@ export default function Basket() {
       quantity: 20,
       price: "£200.51",
       stall: "Fish Guys",
-      location: "R6.10"
+      location: "R6.10",
+      image: require('../../assets/fish/plaicelisting.png'),  
     }
   ]);
 
@@ -134,9 +138,17 @@ export default function Basket() {
             basketItems.map((item) => (
               <View key={item.id} style={styles.basketItem}>
                 {/* Image */}
-                <View style={styles.basketItemImage}>
-                  <Text style={styles.cardX}>✕</Text>
-                </View>
+                {item.image ? (
+                  <Image 
+                    source={item.image}
+                    style={styles.basketItemImage}
+                    resizeMode="cover"
+                  />
+                ) : (
+                  <View style={styles.basketItemImage}>
+                    <Text style={styles.cardX}>✕</Text>
+                  </View>
+                )}
 
                 {/* Info */}
                 <View style={styles.basketItemInfo}>
@@ -195,10 +207,18 @@ export default function Basket() {
                   Amend Order{'\n'}{selectedItem.name} - {selectedItem.quantity}x
                 </Text>
 
-                {/* Item Image Placeholder */}
-                <View style={styles.itemModalImage}>
-                  <Text style={styles.cardX}>✕</Text>
-                </View>
+                {/* Item Image */}
+                {selectedItem.image ? (
+                  <Image 
+                    source={selectedItem.image}
+                    style={styles.itemModalImage}
+                    resizeMode="cover"
+                  />
+                ) : (
+                  <View style={styles.itemModalImage}>
+                    <Text style={styles.cardX}>✕</Text>
+                  </View>
+                )}
 
                 {/* Quantity Picker */}
                 <View style={styles.quantityContainer}>

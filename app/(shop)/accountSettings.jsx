@@ -17,7 +17,6 @@ export default function AccountSettings() {
     const router = useRouter();
     const { userType } = useAuth();
 
-    // Demo data - in real app this would come from AuthContext/database
     const [firstName, setFirstName] = useState("Keith");
     const [lastName, setLastName] = useState("Fish");
     const [email, setEmail] = useState("keith.fish@email.com");

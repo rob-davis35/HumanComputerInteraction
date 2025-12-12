@@ -272,7 +272,10 @@ cardImagePlaceholder: {
     justifyContent: "center",
     alignItems: "center",
     marginRight: 8,
+    overflow: 'hidden',  
+    backgroundColor: '#F9FAFB',  
   },
+
 
   listTextContainer: {
     flex: 1,
@@ -444,9 +447,11 @@ cardImagePlaceholder: {
     alignItems: "center",
     marginBottom: 16,
     backgroundColor: "#F9FAFB",
+    overflow: 'hidden',    
+    width: '100%',          
   },
 
-  quantityContainer: {
+    quantityContainer: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
@@ -547,6 +552,8 @@ cardImagePlaceholder: {
     justifyContent: "center",
     alignItems: "center",
     marginRight: 12,
+    overflow: 'hidden',       
+    backgroundColor: '#F9FAFB',  
   },
 
   basketItemInfo: {
@@ -972,21 +979,21 @@ cardImagePlaceholder: {
     borderRadius: 10,
     padding: 16,
     marginBottom: 12,
-    flexDirection: 'row',        // ← ADD THIS
-    alignItems: 'center',        // ← ADD THIS
+    flexDirection: 'row',        
+    alignItems: 'center',        
     elevation: 1,
     shadowOpacity: 0.05,
     shadowRadius: 3,
     shadowOffset: { width: 0, height: 1 },
-    borderWidth: 1,              // ← ADD THIS
-    borderColor: '#E5E7EB',      // ← ADD THIS
+    borderWidth: 1,             
+    borderColor: '#E5E7EB',      
   },
 
   paymentCardHeader: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 4,             // ← CHANGE from 12 to 4
-    justifyContent: 'space-between',  // ← ADD THIS
+    marginBottom: 4,             
+    justifyContent: 'space-between',  
   },
 
   paymentCardIcon: {
@@ -1359,6 +1366,136 @@ cardImagePlaceholder: {
     color: "#374151",
     marginBottom: 6,
     marginTop: 8,
+  },
+
+  // SITEMAP PAGE STYLES
+  sitemapSearchContainer: {
+    marginBottom: 16,
+  },
+
+  sitemapSearchInput: {
+    backgroundColor: '#fff',
+    padding: 12,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#D1D5DB',
+    fontSize: 16,
+  },
+
+  zoomControlsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    marginBottom: 12,
+    gap: 8,
+  },
+
+  zoomButton: {
+    width: 44,
+    height: 44,
+    backgroundColor: '#2563EB',
+    borderRadius: 8,
+    justifyContent: 'center',
+    alignItems: 'center',
+    elevation: 2,
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    shadowOffset: { width: 0, height: 2 },
+  },
+
+  zoomButtonText: {
+    color: '#fff',
+    fontSize: 24,
+    fontWeight: '700',
+  },
+
+  sitemapFrame: {
+    flex: 1,
+    backgroundColor: '#fff',
+    borderRadius: 12,
+    padding: 16,
+    borderWidth: 2,
+    borderColor: '#D1D5DB',
+    elevation: 3,
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
+    shadowOffset: { width: 0, height: 2 },
+  },
+
+  sitemapImage: {
+    width: '100%',
+    height: '100%',
+  },
+
+  // ACCESSIBILITY PAGE STYLES
+  accessibilityContent: {
+    paddingBottom: 24,
+  },
+
+  accessibilitySection: {
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    padding: 16,
+    marginBottom: 16,
+    elevation: 1,
+    shadowOpacity: 0.05,
+    shadowRadius: 3,
+    shadowOffset: { width: 0, height: 1 },
+  },
+
+  accessibilitySectionTitle: {
+    fontSize: 18,
+    fontWeight: '700',
+    color: '#374151',
+    marginBottom: 16,
+  },
+
+  accessibilityOption: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingVertical: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: '#E5E7EB',
+  },
+
+  accessibilityOptionText: {
+    flex: 1,
+    marginRight: 16,
+  },
+
+  accessibilityOptionLabel: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#374151',
+    marginBottom: 4,
+  },
+
+  accessibilityOptionDescription: {
+    fontSize: 13,
+    color: '#6B7280',
+    lineHeight: 18,
+  },
+
+  accessibilityInfoBox: {
+    backgroundColor: '#DBEAFE',
+    borderRadius: 10,
+    padding: 16,
+    borderLeftWidth: 4,
+    borderLeftColor: '#2563EB',
+  },
+
+  accessibilityInfoTitle: {
+    fontSize: 16,
+    fontWeight: '700',
+    color: '#1E40AF',
+    marginBottom: 8,
+  },
+
+  accessibilityInfoText: {
+    fontSize: 14,
+    color: '#1E3A8A',
+    lineHeight: 20,
+    marginBottom: 8,
   },
 
 });

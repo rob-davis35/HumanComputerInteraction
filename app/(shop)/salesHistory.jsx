@@ -1,6 +1,7 @@
 import { useRouter } from 'expo-router';
 import { useState } from "react";
 import {
+    Image,
     Modal,
     Platform,
     SafeAreaView,
@@ -33,14 +34,16 @@ export default function SalesHistory() {
                 itemName: "Tuna Steak",
                 quantitySold: 30,
                 totalPrice: "£450.00",
-                dateSold: "2023-02-07"
+                dateSold: "2023-02-07",
+                image: require('../../assets/fish/tunafishmonger.png'),
             },
             {
                 id: 2,
                 itemName: "Shrimp",
                 quantitySold: 475,
                 totalPrice: "£600.00",
-                dateSold: "2023-02-13"
+                dateSold: "2023-02-13",
+                image: require('../../assets/fish/shrimpfishmonger.png'),
             },
         ],
         "White Fish": [
@@ -49,14 +52,17 @@ export default function SalesHistory() {
                 itemName: "Lobster Tail",
                 quantitySold: 50,
                 totalPrice: "£500.00",
-                dateSold: "2024-06-10"
+                dateSold: "2024-06-10",
+                image: require('../../assets/fish/lobsterfishmonger.png'),                
+
             },
             {
                 id: 4,
                 itemName: "Salmon Fillet",
                 quantitySold: 100,
                 totalPrice: "£800.00",
-                dateSold: "2024-06-11"
+                dateSold: "2024-06-11",
+                image: require('../../assets/fish/salmonfishmonger.png'),
             },
         ]
     };
@@ -114,9 +120,18 @@ export default function SalesHistory() {
                 <ScrollView contentContainerStyle={styles.list}>
                     {filteredSales.map((item) => (
                         <View key={item.id} style={styles.listItem}>
-                            <View style={styles.listImagePlaceholder}>
-                                <Text style={styles.cardX}>✕</Text>
-                            </View>
+                            {/* Image - UPDATED */}
+                            {item.image ? (
+                                <Image 
+                                    source={item.image}
+                                    style={styles.listImagePlaceholder}
+                                    resizeMode="cover"
+                                />
+                            ) : (
+                                <View style={styles.listImagePlaceholder}>
+                                    <Text style={styles.cardX}>✕</Text>
+                                </View>
+                            )}
                             <View style={styles.listTextContainer}>
                                 <Text style={styles.listTitle}>{item.itemName}</Text>
                                 <Text style={styles.listPrice}>Total: {item.totalPrice}</Text>
@@ -179,12 +194,12 @@ export default function SalesHistory() {
                 <TouchableOpacity
                     activeOpacity={1}
                     style={styles.modalOverlay}
-                    onPress={() => setShowDateFilter(false)}  // <-- close when tapping outside
+                    onPress={() => setShowDateFilter(false)}
                 >
                     <TouchableOpacity
                         activeOpacity={1}
                         style={styles.filterModal}
-                        onPress={(e) => e.stopPropagation()}   // <-- prevent closing on inside tap
+                        onPress={(e) => e.stopPropagation()}
                     >
                         <Text style={styles.filterTitle}>Filter by Date</Text>
 

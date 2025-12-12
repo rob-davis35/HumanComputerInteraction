@@ -31,14 +31,12 @@ export default function SettingsMenu() {
 
   const handleSiteMapPress = () => {
     setShowSettingsModal(false);
-    // Here as placeholder, just gonna slap a jpeg on it 
-    console.log('Site Map pressed');
+    router.push('/(shop)/sitemap');
   };
 
   const handleAccessibilityPress = () => {
     setShowSettingsModal(false);
-    // Another placeholder
-    console.log('Accessibility pressed');
+    router.push('/(shop)/accessibility');
   };
 
   const handleSignOut = () => {

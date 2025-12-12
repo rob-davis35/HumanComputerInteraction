@@ -85,7 +85,7 @@ export default function ShopIndex() {
             <CategoryCard
               key={name}
               label={name}
-              image={categoryImages[name]}  // ← PASSING IMAGE HERE
+              image={categoryImages[name]}  
               onPress={() => router.push(`/category/listings?name=${name}`)}
             />
           ))}

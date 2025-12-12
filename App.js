@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 import {
   Alert,
@@ -418,7 +418,7 @@ function NavItem({ icon, label, active }) {
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-    backgroundColor: "#E5E7EB", // light grey
+    backgroundColor: "#E5E7EB", 
   },
 
   // LOGIN/SIGNUP SCREEN STYLES
