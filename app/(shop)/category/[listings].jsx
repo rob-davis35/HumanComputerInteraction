@@ -2,6 +2,7 @@ import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useState } from "react";
 import {
   Alert,
+  Image,
   Modal,
   SafeAreaView,
   ScrollView,
@@ -17,9 +18,17 @@ import { styles } from '../../../styles/styles';
 function ListingCard({ item, onPress }) {
   return (
     <TouchableOpacity style={styles.listItem} onPress={onPress}>
-      <View style={styles.listImagePlaceholder}>
-        <Text style={styles.cardX}>✕</Text>
-      </View>
+      {item.image ? (
+        <Image 
+          source={item.image}
+          style={styles.listImagePlaceholder}
+          resizeMode="cover"
+        />
+      ) : (
+        <View style={styles.listImagePlaceholder}>
+          <Text style={styles.cardX}>✕</Text>
+        </View>
+      )}
       <View style={styles.listTextContainer}>
         <Text style={styles.listTitle}>{item.name}</Text>
         <Text style={styles.listPrice}>{item.price}</Text>
@@ -34,12 +43,10 @@ export default function CategoryListings() {
   const router = useRouter();
   const { name } = useLocalSearchParams();
 
-  // Modal state
   const [showModal, setShowModal] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
   const [quantity, setQuantity] = useState(1);
 
-  // Validation message state
   const [validationMessage, setValidationMessage] = useState(false);
   const [validationText, setValidationText] = useState("");
   const [validationType, setValidationType] = useState("error");
@@ -50,12 +57,11 @@ export default function CategoryListings() {
     setValidationMessage(true);
   };
 
-  // Get listings for this category
   const listingsForCategory = name && LISTINGS[name] ? LISTINGS[name] : [];
 
   const handleItemPress = (item) => {
     setSelectedItem(item);
-    setQuantity(1); // Reset quantity
+    setQuantity(1);
     setShowModal(true);
   };
 
@@ -74,7 +80,6 @@ export default function CategoryListings() {
   const handleAddToBasket = () => {
     if (!selectedItem) return;
 
-
     Alert.alert(
       "Added to Basket",
       `${quantity}x ${selectedItem.name} added to basket`
@@ -87,15 +92,12 @@ export default function CategoryListings() {
 
   return (
     <SafeAreaView style={styles.root}>
-      {/* Top app bar */}
       <View style={styles.appBar}>
         <Text style={styles.appBarTitle}>Billingsgate Exchange</Text>
         <SettingsMenu />
       </View>
 
-      {/* Content */}
       <View style={styles.content}>
-        {/* Section header with back button */}
         <View style={styles.sectionHeader}>
           <TouchableOpacity
             onPress={() => router.back()}
@@ -108,7 +110,6 @@ export default function CategoryListings() {
           </Text>
         </View>
 
-        {/* Listings list */}
         <ScrollView contentContainerStyle={styles.list}>
           {listingsForCategory.map((item, index) => (
             <ListingCard
@@ -120,7 +121,6 @@ export default function CategoryListings() {
         </ScrollView>
       </View>
 
-      {/* Item Detail Modal */}
       <Modal
         visible={showModal && selectedItem !== null}
         transparent={true}
@@ -135,17 +135,22 @@ export default function CategoryListings() {
           <View style={styles.itemModal} onStartShouldSetResponder={() => true}>
             {selectedItem && (
               <>
-                {/* Item Title */}
                 <Text style={styles.itemModalTitle}>
                   {selectedItem.name} - {selectedItem.price}
                 </Text>
 
-                {/* Item Image Placeholder */}
-                <View style={styles.itemModalImage}>
-                  <Text style={styles.cardX}>✕</Text>
-                </View>
+                {selectedItem.image ? (
+                  <Image 
+                    source={selectedItem.image}
+                    style={styles.itemModalImage}
+                    resizeMode="cover"
+                  />
+                ) : (
+                  <View style={styles.itemModalImage}>
+                    <Text style={styles.cardX}>✕</Text>
+                  </View>
+                )}
 
-                {/* Quantity Picker */}
                 <View style={styles.quantityContainer}>
                   <Text style={styles.quantityLabel}>Quantity</Text>
                   <View style={styles.quantityPicker}>
@@ -165,11 +170,9 @@ export default function CategoryListings() {
                   </View>
                 </View>
 
-                {/* Seller Info */}
                 <Text style={styles.itemModalInfo}>Seller: {selectedItem.stall}</Text>
                 <Text style={styles.itemModalInfo}>Location: {selectedItem.location}</Text>
 
-                {/* Add to Basket Button */}
                 <TouchableOpacity
                   style={styles.addToBasketButton}
                   onPress={handleAddToBasket}

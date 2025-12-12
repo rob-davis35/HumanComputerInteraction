@@ -1,6 +1,7 @@
 import { useRouter } from 'expo-router';
 import { useState } from "react";
 import {
+    Image,
     Modal,
     SafeAreaView,
     ScrollView,
@@ -24,7 +25,8 @@ export default function Basket() {
             time: "8:00am - 12/01/2026",
             price: "£500",
             customer: "Michael Stephens",
-            phoneNumber: "07096393521"
+            phoneNumber: "07096393521",
+            image: require('../../assets/fish/codfishmonger.png'),
         },
         {
             id: 2,
@@ -33,7 +35,8 @@ export default function Basket() {
             time: "1:00pm - 26/01/2026",
             price: "£5.00",
             customer: "Jacob Owens",
-            phoneNumber: "07924679152"
+            phoneNumber: "07924679152",
+            image: require('../../assets/fish/salmonfishmonger.png'),
         },
         {
             id: 3,
@@ -119,9 +122,17 @@ export default function Basket() {
                         orderItems.map((item) => (
                             <View key={item.id} style={styles.basketItem}>
                                 {/* Image */}
-                                <View style={styles.basketItemImage}>
-                                    <Text style={styles.cardX}>✕</Text>
-                                </View>
+                                {item.image ? (
+                                    <Image 
+                                        source={item.image}
+                                        style={styles.basketItemImage}
+                                        resizeMode="cover"
+                                    />
+                                ) : (
+                                    <View style={styles.basketItemImage}>
+                                        <Text style={styles.cardX}>✕</Text>
+                                    </View>
+                                )}
 
                                 {/* Info */}
                                 <View style={styles.basketItemInfo}>
@@ -192,4 +203,4 @@ export default function Basket() {
 
         </SafeAreaView>
     );
-}       
+}

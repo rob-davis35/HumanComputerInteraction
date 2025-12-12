@@ -1,6 +1,7 @@
 import { useRouter } from 'expo-router';
 import { useState } from "react";
 import {
+    Image,
     Modal,
     Platform,
     SafeAreaView,
@@ -30,74 +31,39 @@ export default function SalesHistory() {
         "White Fish": [
             {
                 id: 1,
-                itemName: "Cod Fillet",
-                quantitySold: 120,
-                totalPrice: "£720.00",
-                dateSold: "2024-04-02"
+                itemName: "Tuna Steak",
+                quantitySold: 30,
+                totalPrice: "£450.00",
+                dateSold: "2023-02-07",
+                image: require('../../assets/fish/tunafishmonger.png'),
             },
             {
                 id: 2,
-                itemName: "Haddock Portion",
-                quantitySold: 90,
-                totalPrice: "£540.00",
-                dateSold: "2024-04-05"
-            }
+                itemName: "Shrimp",
+                quantitySold: 475,
+                totalPrice: "£600.00",
+                dateSold: "2023-02-13",
+                image: require('../../assets/fish/shrimpfishmonger.png'),
+            },
         ],
 
         "Oily Fish": [
             {
                 id: 3,
-                itemName: "Mackerel",
-                quantitySold: 150,
-                totalPrice: "£675.00",
-                dateSold: "2024-03-18"
+                itemName: "Lobster Tail",
+                quantitySold: 50,
+                totalPrice: "£500.00",
+                dateSold: "2024-06-10",
+                image: require('../../assets/fish/lobsterfishmonger.png'),
+
             },
             {
                 id: 4,
-                itemName: "Sardines",
-                quantitySold: 200,
-                totalPrice: "£500.00",
-                dateSold: "2024-03-21"
-            }
-        ],
-
-        "Flatfish": [
-            {
-                id: 5,
-                itemName: "Plaice",
-                quantitySold: 70,
-                totalPrice: "£420.00",
-                dateSold: "2024-02-11"
-            }
-        ],
-
-        "Shellfish": [
-            {
-                id: 6,
-                itemName: "King Prawns",
-                quantitySold: 300,
-                totalPrice: "£900.00",
-                dateSold: "2024-05-12"
-            }
-        ],
-
-        "Cephalopods": [
-            {
-                id: 7,
-                itemName: "Squid Rings",
-                quantitySold: 160,
-                totalPrice: "£640.00",
-                dateSold: "2024-01-27"
-            }
-        ],
-
-        "Mollusc": [
-            {
-                id: 8,
-                itemName: "Mussels",
-                quantitySold: 250,
-                totalPrice: "£750.00",
-                dateSold: "2024-06-03"
+                itemName: "Salmon Fillet",
+                quantitySold: 100,
+                totalPrice: "£800.00",
+                dateSold: "2024-06-11",
+                image: require('../../assets/fish/salmonfishmonger.png'),
             },
             {
                 id: 9,
@@ -162,9 +128,18 @@ export default function SalesHistory() {
                 <ScrollView contentContainerStyle={styles.list}>
                     {filteredSales.map((item) => (
                         <View key={item.id} style={styles.listItem}>
-                            <View style={styles.listImagePlaceholder}>
-                                <Text style={styles.cardX}>✕</Text>
-                            </View>
+                            {/* Image - UPDATED */}
+                            {item.image ? (
+                                <Image
+                                    source={item.image}
+                                    style={styles.listImagePlaceholder}
+                                    resizeMode="cover"
+                                />
+                            ) : (
+                                <View style={styles.listImagePlaceholder}>
+                                    <Text style={styles.cardX}>✕</Text>
+                                </View>
+                            )}
                             <View style={styles.listTextContainer}>
                                 <Text style={styles.listTitle}>{item.itemName}</Text>
                                 <Text style={styles.listPrice}>Total: {item.totalPrice}</Text>
@@ -227,12 +202,12 @@ export default function SalesHistory() {
                 <TouchableOpacity
                     activeOpacity={1}
                     style={styles.modalOverlay}
-                    onPress={() => setShowDateFilter(false)}  // <-- close when tapping outside
+                    onPress={() => setShowDateFilter(false)}
                 >
                     <TouchableOpacity
                         activeOpacity={1}
                         style={styles.filterModal}
-                        onPress={(e) => e.stopPropagation()}   // <-- prevent closing on inside tap
+                        onPress={(e) => e.stopPropagation()}
                     >
                         <Text style={styles.filterTitle}>Filter by Date</Text>
 

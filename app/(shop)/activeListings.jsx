@@ -1,6 +1,7 @@
 import { useRouter } from 'expo-router';
 import { useState } from "react";
 import {
+    Image,
     Modal,
     SafeAreaView,
     ScrollView,
@@ -16,7 +17,6 @@ import { styles } from '../../styles/styles';
 export default function Basket() {
     const router = useRouter();
 
-    // Temporary Active Listings
     const [activeListingItems, setActiveListingItems] = useState([
         {
             id: 1,
@@ -24,6 +24,7 @@ export default function Basket() {
             quantity: 100,
             type: "White Fish",
             price: "£5.00",
+            image: require('../../assets/fish/codfishmonger.png'),
         },
         {
             id: 2,
@@ -31,6 +32,7 @@ export default function Basket() {
             quantity: 500,
             type: "White Fish",
             price: "£7.00",
+            image: require('../../assets/fish/haddockfishmonger.png'),
         },
         {
             id: 3,
@@ -38,6 +40,7 @@ export default function Basket() {
             quantity: 20,
             type: "Oily Fish",
             price: "£12.00",
+            image: require('../../assets/fish/salmonfishmonger.png'),
         },
         {
             id: 4,
@@ -59,6 +62,7 @@ export default function Basket() {
             quantity: 342,
             type: "Oily Fish",
             price: "£0.50",
+            image: require('../../assets/fish/mackerelfishmonger.png'),
         },
         {
             id: 7,
@@ -66,6 +70,7 @@ export default function Basket() {
             quantity: 600,
             type: "Shellfish",
             price: "£2.00",
+            image: require('../../assets/fish/shrimpfishmonger.png'),
         },
         {
             id: 8,
@@ -73,6 +78,7 @@ export default function Basket() {
             quantity: 67,
             type: "Cephalopods",
             price: "£15.00",
+            image: require('../../assets/fish/squidfishmonger.png'),
         },
         {
             id: 9,
@@ -80,6 +86,7 @@ export default function Basket() {
             quantity: 100,
             type: "Cephalopods",
             price: "£18.00",
+            image: require('../../assets/fish/octopusfishmonger.png'),
         },
         {
             id: 10,
@@ -87,6 +94,7 @@ export default function Basket() {
             quantity: 142,
             type: "Cephalopods",
             price: "£10.00",
+            image: require('../../assets/fish/cuttlefishfishmonger.png'),
         },
         {
             id: 11,
@@ -94,6 +102,7 @@ export default function Basket() {
             quantity: 312,
             type: "White Fish",
             price: "£6.00",
+            image: require('../../assets/fish/pollockfishmonger.png'),
         },
         {
             id: 12,
@@ -101,6 +110,7 @@ export default function Basket() {
             quantity: 125,
             type: "Oily Fish",
             price: "£0.75",
+            image: require('../../assets/fish/sardinesfishmonger.png'),
         },
         {
             id: 13,
@@ -108,6 +118,7 @@ export default function Basket() {
             quantity: 239,
             type: "Mollusc",
             price: "£4.00",
+            image: require('../../assets/fish/clamsfishmonger.png'),
         },
         {
             id: 14,
@@ -115,6 +126,7 @@ export default function Basket() {
             quantity: 498,
             type: "Shellfish",
             price: "£13.00",
+            image: require('../../assets/fish/crabfishmonger.png'),
         },
         {
             id: 15,
@@ -122,6 +134,7 @@ export default function Basket() {
             quantity: 19,
             type: "Shellfish",
             price: "£20.00",
+            image: require('../../assets/fish/lobsterfishmonger.png'),
         },
         {
             id: 16,
@@ -136,6 +149,7 @@ export default function Basket() {
             quantity: 79,
             type: "Cephalopod",
             price: "£23.00",
+            image: require('../../assets/fish/cuttlefishfishmonger.png'),
         },
         {
             id: 18,
@@ -143,6 +157,7 @@ export default function Basket() {
             quantity: 479,
             type: "Mollusc",
             price: "£6.00",
+            image: require('../../assets/fish/oysterfishmonger.png'),
         },
     ]);
 
@@ -260,10 +275,18 @@ export default function Basket() {
                     ) : (
                         filteredList.map((item) => (
                             <View key={item.id} style={styles.basketItem}>
-                                {/* Image */}
-                                <View style={styles.basketItemImage}>
-                                    <Text style={styles.cardX}>✕</Text>
-                                </View>
+                                {/* Image - UPDATED TO RENDER IMAGES */}
+                                {item.image ? (
+                                    <Image 
+                                        source={item.image}
+                                        style={styles.basketItemImage}
+                                        resizeMode="cover"
+                                    />
+                                ) : (
+                                    <View style={styles.basketItemImage}>
+                                        <Text style={styles.cardX}>✕</Text>
+                                    </View>
+                                )}
 
                                 {/* Info */}
                                 <View style={styles.basketItemInfo}>
@@ -313,10 +336,18 @@ export default function Basket() {
                                     Amend Order{'\n'}{selectedItem.name} - {selectedItem.quantity}x
                                 </Text>
 
-                                {/* Item Image Placeholder */}
-                                <View style={styles.itemModalImage}>
-                                    <Text style={styles.cardX}>✕</Text>
-                                </View>
+                                {/* Item Image - UPDATED TO RENDER IMAGE */}
+                                {selectedItem.image ? (
+                                    <Image 
+                                        source={selectedItem.image}
+                                        style={styles.itemModalImage}
+                                        resizeMode="cover"
+                                    />
+                                ) : (
+                                    <View style={styles.itemModalImage}>
+                                        <Text style={styles.cardX}>✕</Text>
+                                    </View>
+                                )}
 
                                 {/* Quantity Picker */}
                                 <View style={styles.quantityContainer}>
